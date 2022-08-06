@@ -1,0 +1,148 @@
+﻿ID,CREATEUSER,CREATEDATE,MODIFYUSER,MODIFYDATE,RUNDATE,PERS_LAUFNUMMER,PEVE_ID,STATUS,DATA
+449640,MITLAUFNUMMER,08.12.2021 11:14,BS\TZDROT,08.12.2021 12:13,08.12.2021 12:13,5,0,3,"<eCH-0020:delivery xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" version=""3.0"" xmlns:eCH-0020=""http://www.ech.ch/xmlns/eCH-0020/3"">
+  <eCH-0020:deliveryHeader xmlns:eCH-0058=""http://www.ech.ch/xmlns/eCH-0058/5"">
+    <eCH-0058:senderId>1-2701-1</eCH-0058:senderId>
+    <eCH-0058:recipientId>2-BS-6</eCH-0058:recipientId>
+    <eCH-0058:messageId>acef3c76-675b-4829-9794-a5954e6e17b9</eCH-0058:messageId>
+    <eCH-0058:messageType>1710001</eCH-0058:messageType>
+    <eCH-0058:sendingApplication>
+      <eCH-0058:manufacturer>VRSG St. Gallen</eCH-0058:manufacturer>
+      <eCH-0058:product>VRSG | EAI Meldewesen Subjekte</eCH-0058:product>
+      <eCH-0058:productVersion>1.0</eCH-0058:productVersion>
+    </eCH-0058:sendingApplication>
+    <eCH-0058:messageDate>2021-08-12T11:14:32.613</eCH-0058:messageDate>
+    <eCH-0058:eventDate>2021-08-05</eCH-0058:eventDate>
+    <eCH-0058:action>1</eCH-0058:action>
+    <eCH-0058:testDeliveryFlag>false</eCH-0058:testDeliveryFlag>
+  </eCH-0020:deliveryHeader>
+  <eCH-0020:deletedInRegister>
+    <eCH-0020:deledetInRegisterPerson xmlns:eCH-0044=""http://www.ech.ch/xmlns/eCH-0044/4"">
+      <eCH-0044:vn>7567475053700</eCH-0044:vn>
+      <eCH-0044:localPersonId>
+        <eCH-0044:personIdCategory>MU.2701</eCH-0044:personIdCategory>
+        <eCH-0044:personId>4020542</eCH-0044:personId>
+      </eCH-0044:localPersonId>
+      <eCH-0044:otherPersonId>
+        <eCH-0044:personIdCategory>CT.BS.KDM</eCH-0044:personIdCategory>
+        <eCH-0044:personId>0</eCH-0044:personId>
+      </eCH-0044:otherPersonId>
+      <eCH-0044:otherPersonId>
+        <eCH-0044:personIdCategory>MU.2701</eCH-0044:personIdCategory>
+        <eCH-0044:personId>4020542</eCH-0044:personId>
+      </eCH-0044:otherPersonId>
+      <eCH-0044:otherPersonId>
+        <eCH-0044:personIdCategory>LOGANTO_RESIDENT_NR</eCH-0044:personIdCategory>
+        <eCH-0044:personId>112</eCH-0044:personId>
+      </eCH-0044:otherPersonId>
+      <eCH-0044:officialName>Mokoena</eCH-0044:officialName>
+      <eCH-0044:firstName>Matshidiso Sannah</eCH-0044:firstName>
+      <eCH-0044:sex>2</eCH-0044:sex>
+      <eCH-0044:dateOfBirth>
+        <eCH-0044:yearMonthDay>1973-12-15</eCH-0044:yearMonthDay>
+      </eCH-0044:dateOfBirth>
+    </eCH-0020:deledetInRegisterPerson>
+    <eCH-0020:extension xmlns:eEK-0020=""http://xmlns.vrsg.ch/xmlns/eEK-0020/1"">
+      <eEK-0020:residencePaper>
+        <eEK-0020:residencePaperId>23</eEK-0020:residencePaperId>
+      </eEK-0020:residencePaper>
+    </eCH-0020:extension>
+  </eCH-0020:deletedInRegister>
+</eCH-0020:delivery>"
+449640,ANDEREMELDUNG,11.12.2021 11:14,BS\TZDROT,08.12.2021 12:13,08.12.2021 12:13,0,0,3,"<eCH-0020:delivery xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" version=""3.0"" xmlns:eCH-0020=""http://www.ech.ch/xmlns/eCH-0020/3"">
+  <eCH-0020:deliveryHeader xmlns:eCH-0058=""http://www.ech.ch/xmlns/eCH-0058/5"">
+    <eCH-0058:senderId>1-2701-1</eCH-0058:senderId>
+    <eCH-0058:recipientId>2-BS-6</eCH-0058:recipientId>
+    <eCH-0058:messageId>acef3c76-675b-4829-9794-a5954e6e17b9</eCH-0058:messageId>
+    <eCH-0058:messageType>1710001</eCH-0058:messageType>
+    <eCH-0058:sendingApplication>
+      <eCH-0058:manufacturer>VRSG St. Gallen</eCH-0058:manufacturer>
+      <eCH-0058:product>VRSG | EAI Meldewesen Subjekte</eCH-0058:product>
+      <eCH-0058:productVersion>1.0</eCH-0058:productVersion>
+    </eCH-0058:sendingApplication>
+    <eCH-0058:messageDate>2021-08-12T11:14:32.613</eCH-0058:messageDate>
+    <eCH-0058:eventDate>2021-08-05</eCH-0058:eventDate>
+    <eCH-0058:action>1</eCH-0058:action>
+    <eCH-0058:testDeliveryFlag>false</eCH-0058:testDeliveryFlag>
+  </eCH-0020:deliveryHeader>
+  <eCH-0020:deletedInRegister>
+    <eCH-0020:deledetInRegisterPerson xmlns:eCH-0044=""http://www.ech.ch/xmlns/eCH-0044/4"">
+      <eCH-0044:vn>7567475053700</eCH-0044:vn>
+      <eCH-0044:localPersonId>
+        <eCH-0044:personIdCategory>MU.2701</eCH-0044:personIdCategory>
+        <eCH-0044:personId>113</eCH-0044:personId>
+      </eCH-0044:localPersonId>
+      <eCH-0044:otherPersonId>
+        <eCH-0044:personIdCategory>CT.BS.KDM</eCH-0044:personIdCategory>
+        <eCH-0044:personId>0</eCH-0044:personId>
+      </eCH-0044:otherPersonId>
+      <eCH-0044:otherPersonId>
+        <eCH-0044:personIdCategory>MU.2701</eCH-0044:personIdCategory>
+        <eCH-0044:personId>4020542</eCH-0044:personId>
+      </eCH-0044:otherPersonId>
+      <eCH-0044:otherPersonId>
+        <eCH-0044:personIdCategory>LOGANTO_RESIDENT_NR</eCH-0044:personIdCategory>
+        <eCH-0044:personId>21315972</eCH-0044:personId>
+      </eCH-0044:otherPersonId>
+      <eCH-0044:officialName>Mokoena</eCH-0044:officialName>
+      <eCH-0044:firstName>Matshidiso Sannah</eCH-0044:firstName>
+      <eCH-0044:sex>2</eCH-0044:sex>
+      <eCH-0044:dateOfBirth>
+        <eCH-0044:yearMonthDay>1973-12-15</eCH-0044:yearMonthDay>
+      </eCH-0044:dateOfBirth>
+    </eCH-0020:deledetInRegisterPerson>
+    <eCH-0020:extension xmlns:eEK-0020=""http://xmlns.vrsg.ch/xmlns/eEK-0020/1"">
+      <eEK-0020:residencePaper>
+        <eEK-0020:residencePaperId>23</eEK-0020:residencePaperId>
+      </eEK-0020:residencePaper>
+    </eCH-0020:extension>
+  </eCH-0020:deletedInRegister>
+</eCH-0020:delivery>"
+449640,ANDEREMELDUNG2,09.12.2021 11:14,BS\TZDROT,08.12.2021 12:13,08.12.2021 12:13,0,0,3,"<eCH-0020:delivery xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" version=""3.0"" xmlns:eCH-0020=""http://www.ech.ch/xmlns/eCH-0020/3"">
+  <eCH-0020:deliveryHeader xmlns:eCH-0058=""http://www.ech.ch/xmlns/eCH-0058/5"">
+    <eCH-0058:senderId>1-2701-1</eCH-0058:senderId>
+    <eCH-0058:recipientId>2-BS-6</eCH-0058:recipientId>
+    <eCH-0058:messageId>acef3c76-675b-4829-9794-a5954e6e17b9</eCH-0058:messageId>
+    <eCH-0058:messageType>1710001</eCH-0058:messageType>
+    <eCH-0058:sendingApplication>
+      <eCH-0058:manufacturer>VRSG St. Gallen</eCH-0058:manufacturer>
+      <eCH-0058:product>VRSG | EAI Meldewesen Subjekte</eCH-0058:product>
+      <eCH-0058:productVersion>1.0</eCH-0058:productVersion>
+    </eCH-0058:sendingApplication>
+    <eCH-0058:messageDate>2021-08-12T11:14:32.613</eCH-0058:messageDate>
+    <eCH-0058:eventDate>2021-08-05</eCH-0058:eventDate>
+    <eCH-0058:action>1</eCH-0058:action>
+    <eCH-0058:testDeliveryFlag>false</eCH-0058:testDeliveryFlag>
+  </eCH-0020:deliveryHeader>
+  <eCH-0020:deletedInRegister>
+    <eCH-0020:deledetInRegisterPerson xmlns:eCH-0044=""http://www.ech.ch/xmlns/eCH-0044/4"">
+      <eCH-0044:vn>7567475053700</eCH-0044:vn>
+      <eCH-0044:localPersonId>
+        <eCH-0044:personIdCategory>MU.2701</eCH-0044:personIdCategory>
+        <eCH-0044:personId>114</eCH-0044:personId>
+      </eCH-0044:localPersonId>
+      <eCH-0044:otherPersonId>
+        <eCH-0044:personIdCategory>CT.BS.KDM</eCH-0044:personIdCategory>
+        <eCH-0044:personId>0</eCH-0044:personId>
+      </eCH-0044:otherPersonId>
+      <eCH-0044:otherPersonId>
+        <eCH-0044:personIdCategory>MU.2701</eCH-0044:personIdCategory>
+        <eCH-0044:personId>4020542</eCH-0044:personId>
+      </eCH-0044:otherPersonId>
+      <eCH-0044:otherPersonId>
+        <eCH-0044:personIdCategory>LOGANTO_RESIDENT_NR</eCH-0044:personIdCategory>
+        <eCH-0044:personId>21315972</eCH-0044:personId>
+      </eCH-0044:otherPersonId>
+      <eCH-0044:officialName>Mokoena</eCH-0044:officialName>
+      <eCH-0044:firstName>Matshidiso Sannah</eCH-0044:firstName>
+      <eCH-0044:sex>2</eCH-0044:sex>
+      <eCH-0044:dateOfBirth>
+        <eCH-0044:yearMonthDay>1973-12-15</eCH-0044:yearMonthDay>
+      </eCH-0044:dateOfBirth>
+    </eCH-0020:deledetInRegisterPerson>
+    <eCH-0020:extension xmlns:eEK-0020=""http://xmlns.vrsg.ch/xmlns/eEK-0020/1"">
+      <eEK-0020:residencePaper>
+        <eEK-0020:residencePaperId>23</eEK-0020:residencePaperId>
+      </eEK-0020:residencePaper>
+    </eCH-0020:extension>
+  </eCH-0020:deletedInRegister>
+</eCH-0020:delivery>"

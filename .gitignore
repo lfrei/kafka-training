@@ -1,0 +1,6 @@
+.idea
+/uc-witness-protection/.idea
+/uc-witness-protection/csv-producer/.idea
+/uc-witness-protection/kafka-stream/.idea
+/uc-witness-protection/csv-producer/target
+/uc-witness-protection/kafka-stream/target
