@@ -1,3 +1,7 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+
 sensor:
   plant-id: plant01
   sensor-id: sensor001
