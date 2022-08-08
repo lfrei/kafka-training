@@ -219,6 +219,19 @@ services:
       MYSQL_USER: kafka_training
       MYSQL_PASSWORD: kafka_training
 
+  sensor:
+    image: ghcr.io/lfrei/kafka-training/sensor:latest
+    restart: always
+    depends_on:
+      - broker
+      - schema-registry
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: broker:29092
+      SENSOR_SENSOR_ID: mySensor
+      SENSOR_PLANT_ID: myPlant
+      SENSOR_MIN_VALUE: 1
+      SENSOR_MAX_VALUE: 1000000    
+
 volumes:
   db-leach: {}
   db_data: {}
