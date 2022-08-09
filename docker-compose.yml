@@ -227,6 +227,7 @@ services:
       - schema-registry
     environment:
       SPRING_KAFKA_BOOTSTRAP_SERVERS: broker:29092
+      SPRING_KAFKA_PROPERTIES_SCHEMA_REGISTRY_URL: http://schema-registry:8081
       SENSOR_SENSOR_ID: mySensor
       SENSOR_PLANT_ID: myPlant
       SENSOR_MIN_VALUE: 1
