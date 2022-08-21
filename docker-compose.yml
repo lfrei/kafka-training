@@ -233,6 +233,23 @@ services:
       SENSOR_MIN_VALUE: 1
       SENSOR_MAX_VALUE: 1000000    
 
+  motor:
+    image: ghcr.io/lfrei/kafka-training/motor:latest
+    restart: always
+    depends_on:
+      - broker
+      - schema-registry
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: broker:29092
+      SPRING_KAFKA_PROPERTIES_SCHEMA_REGISTRY_URL: http://schema-registry:8081
+      MOTOR_MOTOR_ID: myMotor
+      MOTOR_PLANT_ID: myPlant
+      MOTOR_STATES_0: starting  
+      MOTOR_STATES_1: running
+      MOTOR_STATES_2: stopping
+      MOTOR_STATES_3: stopped
+      MOTOR_STATES_4: error 
+
 volumes:
   db-leach: {}
   db_data: {}
