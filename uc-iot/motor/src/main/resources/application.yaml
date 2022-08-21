@@ -7,9 +7,10 @@ spring:
     properties:
       schema.registry.url: http://localhost:8081
 
-sensor:
+motor:
   plant-id: plant01
-  sensor-id: sensor001
-  interval-ms: 10000
-  min-value: 0
-  max-value: 100
+  motor-id: motor001
+  max-interval-ms: 30000
+  states:
+    - "on"
+    - "off"

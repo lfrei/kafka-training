@@ -18,7 +18,7 @@ public class SensorProducer {
     private final SensorConfig sensorConfig;
     private final KafkaTemplate<String, SensorMeasurement> kafkaTemplate;
 
-    @Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelayString = "${sensor.interval-ms}")
     public void sendMeasurement() {
         SensorMeasurement measurement = getMeasurement();
 

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class SensorConfig {
     String plantId;
     String sensorId;
+    Long intervalMs;
     Long minValue;
     Long maxValue;
 }
