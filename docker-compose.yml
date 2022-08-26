@@ -250,6 +250,18 @@ services:
       MOTOR_STATES_3: stopped
       MOTOR_STATES_4: error 
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    links:
+      - mariadb
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8085:80
 volumes:
   db-leach: {}
   db_data: {}
