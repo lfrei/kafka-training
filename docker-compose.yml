@@ -211,13 +211,14 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/var/lib/mysql:rw
       - db_conf:/etc/mysql
+      - ./uc-witness-protection/resources/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_ROOT_PASSWORD: root-password
       MYSQL_DATABASE: events
-      MYSQL_USER: kafka_training
-      MYSQL_PASSWORD: kafka_training
+      MYSQL_USER: kafka-training
+      MYSQL_PASSWORD: kafka-training
 
   sensor:
     image: ghcr.io/lfrei/kafka-training/sensor:latest
