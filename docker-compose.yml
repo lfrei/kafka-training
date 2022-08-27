@@ -98,6 +98,8 @@ services:
         cd /usr/share/java/kafka-connect-jdbc/
         # See https://dbschema.com/jdbc-driver/MySql.html
         curl https://dbschema.com/jdbc-drivers/MySqlJdbcDriver.zip | jar xv
+        cd /usr/share/java/kafka-connect-storage-common
+        wget https://repo1.maven.org/maven2/org/apache/kafka/connect-file/3.1.0/connect-file-3.1.0.jar
         # MS SQL
         cd /usr/share/java/kafka-connect-jdbc/
         # See https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc/7.0.0.jre8
