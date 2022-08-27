@@ -60,7 +60,7 @@ services:
 
   connect:
     restart: always
-    image: confluentinc/cp-kafka-connect:5.4.0
+    image: confluentinc/cp-kafka-connect:5.4.9
     container_name: kafka-connect-01
     depends_on:
       - broker
@@ -69,7 +69,7 @@ services:
       - 8083:8083
     environment:
       CONNECT_LOG4J_APPENDER_STDOUT_LAYOUT_CONVERSIONPATTERN: "[%d] %p %X{connector.context}%m (%c:%L)%n"
-      CONNECT_BOOTSTRAP_SERVERS: "broker:9092"
+      CONNECT_BOOTSTRAP_SERVERS: "broker:29092"
       CONNECT_REST_PORT: 8083
       CONNECT_REST_ADVERTISED_HOST_NAME: "kafka-connect-01"
       CONNECT_GROUP_ID: compose-connect-group
@@ -96,8 +96,8 @@ services:
         # ------------
         # MySQL
         cd /usr/share/java/kafka-connect-jdbc/
-        # See https://dev.mysql.com/downloads/connector/j/
-        curl https://cdn.mysql.com/Downloads/Connector-J/mysql-connector-java-8.0.23.tar.gz | tar xz 
+        # See https://dbschema.com/jdbc-driver/MySql.html
+        curl https://dbschema.com/jdbc-drivers/MySqlJdbcDriver.zip | jar xv
         # MS SQL
         cd /usr/share/java/kafka-connect-jdbc/
         # See https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc/7.0.0.jre8
@@ -106,7 +106,7 @@ services:
         cp /db-leach/jdbc/lib/ojdbc8.jar /usr/share/java/kafka-connect-jdbc
         # Now launch Kafka Connect
         sleep infinity &
-        /etc/confluent/docker/run 
+        /etc/confluent/docker/run
 
   ksqldb-server:
     image: confluentinc/cp-ksqldb-server:6.2.1
