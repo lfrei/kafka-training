@@ -9,14 +9,14 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @Slf4j
-public class Exercise1Stream {
+public class Exercise2Stream {
 
     @Bean
     public KStream<String, SensorMeasurement> samples(StreamsBuilder builder) {
 
         KStream<String, SensorMeasurement> stream = builder.stream("myPlant");
 
-        // TODO: write alerts for high measurement values to a new topic
+        // TODO: calculate the average value of a sensor over a 1min time frame
 
         return stream;
     }

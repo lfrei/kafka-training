@@ -42,9 +42,8 @@ A motor is changing its state at a random time. You can specify the states, as w
 
 Goals:
 
-* Build your first Kafka Stream application
+* Run your first Kafka Stream application
 * Learn about different Kafka Steams Operations
-* Understand Stateless Operations in Kafka Streams
 
 Exercise:
 
@@ -60,20 +59,47 @@ Links:
 
 * Kafka Streams Stateless Operations: https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#stateless-transformations
 
-### Exercise 1: Calculate the average value for a sensor over a 1min time frame
+### Exercise 1: Write alerts for high measurement values to a new topic
 
 Goals:
 
-* Learn about different Kafka Steams Operations
+* Understand Stateless Operations in Kafka Streams
+* Learn how to write to Output topics
+
+Exercise:
+
+* Use the template [Exercise1Stream.java](uc-iot/kafka-stream/src/main/java/com/zuehlke/training/kafka/iot/stream/Exercise1Stream.java) to implement a stream
+* Filter by key to only get sensor values
+* Filter by values to only keep the sensor measurement of the top 20%
+* Write messages to output topic
+
+Hints:
+
+* Have a look at the [Avro Schema](uc-iot/kafka-stream/src/main/resources/avro/values.avsc)
+* Check the configured max values of the sensor. The default is 1 Mio
+
+Links:
+
+* Kafka Streams Stateless Operations: https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#stateless-transformations
+* Writing Streams back to kafka: https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#writing-streams-back-to-kafka
+
+Strech Goal:
+
+* Do the same for motors that are in the `error` state. You can do this in the same stream (checkout the `branch` Operation) or in a new stream.
+
+### Exercise 2: Calculate the average value for a sensor over a 1min time frame
+
+Goals:
+
 * Understand Stateful Operations in Kafka Streams
 * Unterstand Windowing in Kafka Streams
 
 Exercise:
 
-* Use the template [Exercise1Stream.java](uc-iot/kafka-stream/src/main/java/com/zuehlke/training/kafka/iot/stream/Exercise1Stream.java) to implement a stream
-* Filter for Measurements with numeric values only
+* Use the template [Exercise2Stream.java](uc-iot/kafka-stream/src/main/java/com/zuehlke/training/kafka/iot/stream/Exercise2Stream.java) to implement a stream
+* Filter by key to only get sensor values
 * Group messages for the same sensor (= key)
-* Perform a windowed aggreagation with a timeframe of 1min
+* Perform a windowed aggregation with a timeframe of 1min
 * Use reduce to build the average of two messages
 * Write the result to a new Kafka Topic
 
