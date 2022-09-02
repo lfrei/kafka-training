@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class Exercise0Stream {
 
     @Bean
-    public KStream<String, SensorMeasurement> example(StreamsBuilder builder) {
+    public KStream<String, SensorMeasurement> exercise0(StreamsBuilder builder) {
 
         KStream<String, SensorMeasurement> stream = builder.stream("myPlant");
 
