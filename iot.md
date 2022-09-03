@@ -119,10 +119,9 @@ Goals:
 
 * Unterstand GlobalKTables and Join Operations
 
-Exercise:
+Preparation:
 
-* Prepare Metadata Topic
-  * Navigate to [AKHQ](http://localhost:8080/ui/docker-kafka-server/topic)
+* Navigate to [AKHQ](http://localhost:8080/ui/docker-kafka-server/topic) to create the `metadata` topic
   * Create a new topic
     * Select Button 'Create a topic'
     * Enter Name `metadata`
@@ -132,9 +131,12 @@ Exercise:
     * Select Button 'Produce to Topic'
     * Enter Key `mySensor` and value `cm`, Select 'Produce' Button
     * Enter Key `myMotor` and value `state`, Select 'Produce' Button
+  
+Exercise:
+
 * Use the template [Exercise3Stream.java](uc-iot/kafka-stream/src/main/java/com/zuehlke/training/kafka/iot/stream/Exercise3Stream.java) to implement a stream
 * Join the `myPlant` stream with the `metadata` table using the keys
-* Expand `SensorMeasurement` value with type from metadata
+* Expand `SensorMeasurement` value with type from `metadata`
 * Write the result to a new Kafka Topic
 
 Hints:
