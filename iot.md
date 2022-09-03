@@ -100,13 +100,15 @@ Exercise:
 * Filter by key to only get sensor values
 * Group messages for the same sensor (= key)
 * Perform a windowed aggregation with a timeframe of 1min
-* Use reduce to build the average of two messages
+* Calculate the average value from the aggregated values
+* Create a new `SensorMeasurement`
 * Write the result to a new Kafka Topic
 
 Hints:
 
 * Have a look at the [Avro Schema](uc-iot/kafka-stream/src/main/resources/avro/values.avsc)
 * Have a look at the Operations: `filter`, `groupByKey`, `windowedBy` and `aggregate`
+* Measurement are being sent in a fixed interval of 10s
 
 Links:
 
