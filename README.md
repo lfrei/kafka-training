@@ -2,7 +2,7 @@
 
 * [Kafka Training Environment](training-environment.md)
 
-##
+## Day 1
 * [Schema Registry](schema-registry.md)
 * [UC IoT](iot.md)
 
