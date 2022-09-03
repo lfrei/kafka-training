@@ -1,6 +1,9 @@
 # Kafka Training
 
 * [Kafka Training Environment](training-environment.md)
+
+##
+* [Schema Registry](schema-registry.md)
 * [UC IoT](iot.md)
 
 ## Day 2

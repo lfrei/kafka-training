@@ -1,0 +1,29 @@
+{
+  "namespace": "com.zuehlke.training.kafka.iot",
+  "type": "record",
+  "name": "SensorMeasurement",
+  "doc": "Sensor measurement data point",
+  "fields" : [
+    {
+      "name" : "sensor_id",
+      "type" : "string",
+      "doc"  : "ID which uniquely identifies the sensor across the plant"
+    },
+    {
+      "name" : "datetime",
+      "type" : "long",
+      "doc"  : "UTC timestamp of the sensor measurement"
+    },
+    {
+      "name" : "value",
+      "type" : [ "long", "string" ],
+      "doc"  : "The value of the sensor measurement"
+    },
+    {
+      "name" : "type",
+      "type" : "string",
+      "doc"  : "The type of the measurement",
+      "default" : "undefined"
+    }
+  ]
+}
