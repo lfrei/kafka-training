@@ -107,7 +107,7 @@ Exercise:
 Hints:
 
 * Have a look at the [Avro Schema](uc-iot/kafka-stream/src/main/resources/avro/values.avsc)
-* Have a look at the Operations: `filter`, `groupByKey`, `windowedBy` and `reduce`
+* Have a look at the Operations: `filter`, `groupByKey`, `windowedBy` and `aggregate`
 
 Links:
 

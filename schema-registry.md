@@ -66,7 +66,7 @@ Try to send a message that include the new mandatory field:
 {"sensor_id":"mySensor","datetime":1234,"value":{"long": 999},"type":"m"}
 ```
 
-What happend? Check the log output and the AKHQ page
+📝 What happend? Check the log output and the AKHQ page
 
 ## Produce messages with a newer Avro Schema (optional field)
 
@@ -91,7 +91,7 @@ Try to send some messages with the new field:
 
 💡 Inspect the schema that has been registered to the topic `avro-sensor`: http://localhost:8080/ui/docker-kafka-server/schema
 
-What is the version number of the schema?
+📝 What is the version number of the schema?
 
 ## Consume messages with a older Avro Schema
 
@@ -106,4 +106,8 @@ kafka-avro-console-consumer \
   --from-beginning
 ```
 
-Are you able to read the data?
+📝 Are you able to read the data?
+
+## Understand how schemas are used in a custom Kafka Client
+
+Have a look at [SensorProducer.java](uc-iot/sensor/src/main/java/com/zuehlke/training/kafka/iot/sensor/SensorProducer.java)
