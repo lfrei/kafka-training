@@ -18,6 +18,12 @@
       "name" : "value",
       "type" : [ "long", "string" ],
       "doc"  : "The value of the sensor measurement"
+    },
+    {
+      "name" : "type",
+      "type" : "string",
+      "doc"  : "The type of the measurement",
+      "default" : "undefined"
     }
   ]
 }

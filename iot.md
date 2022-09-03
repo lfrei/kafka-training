@@ -14,7 +14,6 @@ If you want to configure your own sensor / motor you have the following options:
 
 A sensor is sending random values in a fixed interval. You can specify the interval, as well as the min and max values.
 
-
 | Property           | Description                                           |
 |--------------------|-------------------------------------------------------|
 | SENSOR_SENSOR_ID   | ID of the sensor. Key of the kafka message            |
@@ -112,4 +111,36 @@ Hints:
 Links:
 
 * Kafka Streams Windowing: https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#windowing
-* Kafka Streams Reduce (windowed): https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#aggregating (Scroll down in Table)
+* Kafka Streams Aggregation (windowed): https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#aggregating
+
+### Exercise 3: Add metadata to sensor message
+
+Goals:
+
+* Unterstand GlobalKTables and Join Operations
+
+Exercise:
+
+* Prepare Metadata Topic
+  * Navigate to [AKHQ](http://localhost:8080/ui/docker-kafka-server/topic)
+  * Create a new topic
+    * Select Button 'Create a topic'
+    * Enter Name `metadata`
+    * Click 'Create'
+  * Add metadata to topic
+    * Select topic `metadata` and click on magnifier icon
+    * Select Button 'Produce to Topic'
+    * Enter Key `mySensor` and value `cm`, Select 'Produce' Button
+    * Enter Key `myMotor` and value `state`, Select 'Produce' Button
+* Use the template [Exercise3Stream.java](uc-iot/kafka-stream/src/main/java/com/zuehlke/training/kafka/iot/stream/Exercise3Stream.java) to implement a stream
+* Join the `myPlant` stream with the `metadata` table using the keys
+* Expand `SensorMeasurement` value with type from metadata
+* Write the result to a new Kafka Topic
+
+Hints:
+
+* `SensorMeasurement` provides a builder that can be used to set the type
+
+Links:
+
+* Kafka Streams Joining: https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#joining

@@ -92,7 +92,7 @@ class Exercise1StreamTest {
         return new TestRecord<>(key, sensorMeasurement);
     }
 
-    public static Properties getKafkaStreamProperties() {
+    private static Properties getKafkaStreamProperties() {
         Properties properties = new Properties();
         properties.put(StreamsConfig.APPLICATION_ID_CONFIG, "my-test");
         properties.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
