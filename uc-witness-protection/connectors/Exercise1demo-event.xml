@@ -1,0 +1,22 @@
+"<eCH-0020:delivery>
+<eCH-0020:deliveryHeader xmlns:eCH-0058=""http://www.ech.ch/xmlns/eCH-0058/5"">
+        </eCH-0020:deliveryHeader>
+
+<eCH-0020:moveIn>
+<eCH-0020:moveInPerson>
+    <eCH-0020:personIdentification xmlns:eCH-0044=""http://www.ech.ch/xmlns/eCH-0044/4"">
+    <eCH-0044:officialName>Musterfrau</eCH-0044:officialName>
+    <eCH-0044:firstName>Lara</eCH-0044:firstName>
+    <eCH-0044:sex>2</eCH-0044:sex>
+    <eCH-0044:dateOfBirth>
+        <eCH-0044:yearMonthDay>2000-04-03</eCH-0044:yearMonthDay>
+    </eCH-0044:dateOfBirth>
+</eCH-0020:personIdentification>
+<eCH-0020:birthInfo>
+    <eCH-0020:birthData xmlns:eCH-0011=""http://www.ech.ch/xmlns/eCH-0011/8"">
+    <eCH-0011:dateOfBirth xmlns:eCH-0044=""http://www.ech.ch/xmlns/eCH-0044/4"">
+    <eCH-0044:yearMonthDay>2000-04-03</eCH-0044:yearMonthDay>
+</eCH-0011:dateOfBirth>
+</eCH-0020:moveInPerson>
+        </eCH-0020:moveIn>
+        </eCH-0020:delivery>"

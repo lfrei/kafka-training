@@ -5,7 +5,9 @@ TODO: Final wording.
 
 Let's get started and create a file topic.
 ```
-kafka-topics.sh --zookeeper localhost:2181 --create --topic file-topic --partitions 1 --replication-factor 1
+kafka-topics.sh --zookeeper localhost:2181 --create --topic file-topic --partitions 3 --replication-factor 1
+# to describe a topic
+kafka-topics.sh --zookeeper localhost:2181 --topic file-topic --describe
 ```
 
 Access to connect container and create an empty file.
