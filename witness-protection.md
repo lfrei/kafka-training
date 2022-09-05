@@ -19,7 +19,7 @@ Goals:
 
 * Use Kafka connect to store database rows as events in a Kafka topics
 * Learn about setting up the first JDBC connector
-* ...
+* See a connector in action
 
 Exercise:
 
