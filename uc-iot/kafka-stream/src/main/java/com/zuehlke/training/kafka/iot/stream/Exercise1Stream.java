@@ -18,6 +18,13 @@ public class Exercise1Stream {
 
         // TODO: write alerts for high measurement values to a new topic
 
+        stream
+                // TODO: filter by key to only get sensor values
+                .filter(((key, value) -> false))
+                // TODO: filter by values to only keep the sensor measurement of the top 20%
+                .filter(((key, value) -> false))
+                .to("myPlant-alert");
+
         return stream;
     }
 }

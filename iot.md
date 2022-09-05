@@ -2,6 +2,12 @@
 
 ## Initial Setup
 
+Start docker compose:
+
+```
+docker compose up -d
+```
+
 For the IoT use case, there are two types of containers that simulate IoT devices in a plant:
 
 * A sensor, that sends measurements in a fixed interval
@@ -47,7 +53,7 @@ Goals:
 Exercise:
 
 * Use the template [Exercise0Stream.java](uc-iot/kafka-stream/src/main/java/com/zuehlke/training/kafka/iot/stream/Exercise0Stream.java) to implement a stream
-* Run the application and check the log output
+* Run the application with `mvn spring-boot:run` and check the log output
 * Play around with the different (stateless) operations
 
 Hints:
@@ -87,35 +93,7 @@ Strech Goal:
 * Do the same for motors that are in the `error` state. You can do this in the same stream (checkout the `branch` Operation) or in a new stream.
 * Have a look at [Exercise1StreamTest](uc-iot/kafka-stream/src/test/java/com/zuehlke/training/kafka/iot/stream/Exercise1StreamTest.java). Is it green?
 
-### Exercise 2: Calculate the average value for a sensor over a 1min time frame
-
-Goals:
-
-* Understand Stateful Operations in Kafka Streams
-* Unterstand Windowing in Kafka Streams
-
-Exercise:
-
-* Use the template [Exercise2Stream.java](uc-iot/kafka-stream/src/main/java/com/zuehlke/training/kafka/iot/stream/Exercise2Stream.java) to implement a stream
-* Filter by key to only get sensor values
-* Group messages for the same sensor (= key)
-* Perform a windowed aggregation with a timeframe of 1min
-* Calculate the average value from the aggregated values
-* Create a new `SensorMeasurement`
-* Write the result to a new Kafka Topic
-
-Hints:
-
-* Have a look at the [Avro Schema](uc-iot/kafka-stream/src/main/resources/avro/values.avsc)
-* Have a look at the Operations: `filter`, `groupByKey`, `windowedBy` and `aggregate`
-* Measurement are being sent in a fixed interval of 10s
-
-Links:
-
-* Kafka Streams Windowing: https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#windowing
-* Kafka Streams Aggregation (windowed): https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#aggregating
-
-### Exercise 3: Add metadata to sensor message
+### Exercise 2: Add metadata to sensor message
 
 Goals:
 
@@ -136,7 +114,7 @@ Preparation:
   
 Exercise:
 
-* Use the template [Exercise3Stream.java](uc-iot/kafka-stream/src/main/java/com/zuehlke/training/kafka/iot/stream/Exercise3Stream.java) to implement a stream
+* Use the template [Exercise2Stream.java](uc-iot/kafka-stream/src/main/java/com/zuehlke/training/kafka/iot/stream/Exercise2Stream.java) to implement a stream
 * Join the `myPlant` stream with the `metadata` table using the keys
 * Expand `SensorMeasurement` value with type from `metadata`
 * Write the result to a new Kafka Topic
@@ -148,3 +126,34 @@ Hints:
 Links:
 
 * Kafka Streams Joining: https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#joining
+
+### Exercise 2 (Optional): Calculate the average value for a sensor over a 1min time frame
+
+🔎 This is a real world exercise and can be challenging
+
+Goals:
+
+* Understand Stateful Operations in Kafka Streams
+* Unterstand Windowing in Kafka Streams
+
+Exercise:
+
+* Use the template [Exercise3Stream.java](uc-iot/kafka-stream/src/main/java/com/zuehlke/training/kafka/iot/stream/Exercise3Stream.java) to implement a stream
+* Filter by key to only get sensor values
+* Group messages for the same sensor (= key)
+* Perform a windowed aggregation with a timeframe of 1min
+* Calculate the average value from the aggregated values
+* Create a new `SensorMeasurement`
+* Write the result to a new Kafka Topic
+
+Hints:
+
+* Have a look at the [Avro Schema](uc-iot/kafka-stream/src/main/resources/avro/values.avsc)
+* Have a look at the Operations: `filter`, `groupByKey`, `windowedBy` and `aggregate`
+* Measurement are being sent in a fixed interval of 10s
+
+Links:
+
+* Kafka Streams Windowing: https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#windowing
+* Kafka Streams Aggregation (windowed): https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#aggregating
+
