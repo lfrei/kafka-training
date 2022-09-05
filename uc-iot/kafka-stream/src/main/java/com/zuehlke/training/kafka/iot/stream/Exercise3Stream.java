@@ -16,7 +16,13 @@ public class Exercise3Stream {
 
         KStream<String, SensorMeasurement> stream = builder.stream("myPlant");
 
-        // TODO: calculate the average value of a sensor over a 1min time frame
+        // TODO: group messages for the same sensor (= key)
+
+        // TODO: perform a windowed aggregation with a timeframe of 1min
+
+        // TODO: calculate the average value from the aggregated values
+
+        // TODO: write the result to a new Kafka Topic
 
         return stream;
     }

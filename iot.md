@@ -127,7 +127,7 @@ Links:
 
 * Kafka Streams Joining: https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#joining
 
-### Exercise 2 (Optional): Calculate the average value for a sensor over a 1min time frame
+### Exercise 3 (Optional): Calculate the average value for a sensor over a 1min time frame
 
 🔎 This is a real world exercise and can be challenging
 
