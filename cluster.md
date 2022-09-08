@@ -4,7 +4,7 @@
 
 Start 3 Zookeeper hosts
 
-![3 Zookeeper](.\uc-cluster\zoookeepers.png)
+![3 Zookeeper](.\uc-cluster\zookeepers.jpg)
 
 ```
 docker run -d \
@@ -43,7 +43,7 @@ docker run -d \
 
 Start 3 Broker instances
 
-![3 Broker and Zookeeper](.\uc-cluster\brokers.png)
+![3 Broker and Zookeeper](.\uc-cluster\brokers.jpg)
 
 ```
 docker run -d \
@@ -72,7 +72,7 @@ docker run -d \
 ```
 
 
-## Interact with the cluster
+## Exercise 1: Cluster and topics, produce and consume messages
 
 First, we start an interactive shell that is attached to our cluster net and contains the kafka command line shell scripts
 
@@ -102,7 +102,6 @@ check if the topic is there. Run _./kafka-topics --help_ to check how.
 Generate sensor data:
 ```
 seq 42 | ./kafka-console-producer --broker-list localhost:19092,localhost:29092,localhost:39092 --topic sensor && echo 'Produced 42 messages.'
-seq 42 | sed 's/\([0-9]\+\)/\1:\1/g' | ./kafka-console-producer --broker-list localhost:19092 --topic sensor  --property parse.key=true --property key.separator=: && echo 'Produced 42 messages.'
 ```
 
 
@@ -112,6 +111,51 @@ Check the sensor data:
 ```
 
 shutdown one broker
-* does the creation and the read still work
-* does it work with only one broker
-* what happens to the replicas if you send data with only one broker?
+* does the creation and the read still work?
+* does it work with only one broker?
+* what happens to the replicas if you create data with only one broker alive? Is this behavior desired?
+
+play with failover
+* create a stream (seq 10901101042 |...)
+* connect a consumer
+* check the leader, and turn on and off brokers
+* what did you observe?
+
+## Exercise 2: Partitioning and Partitioning Keys, Consumer Groups 
+
+Create the sensor2 topic with 2 partitions and 3 replicas
+
+```
+ ./kafka-topics --bootstrap-server localhost:19092 --create --topic sensor2 --partitions 2 --replication-factor 3 --if-not-exists
+```
+
+Generate Sensordata
+
+´´´
+seq 42 | sed 's/\([0-9]\+\)/\1:\1/g' | ./kafka-console-producer --broker-list localhost:19092 --topic sensor2  --property parse.key=true --property key.separator=: && echo 'Produced 42 messages.'
+´´´
+
+Read Sensordata
+```
+./kafka-console-consumer --bootstrap-server localhost:19092,localhost:29092,localhost:39092 --from-beginning --topic sensor2
+```
+
+What happened?
+
+
+Consumer Groups
+* Read the data from topic sensor2 with a second consumer parallel
+* Read the data from topic sensor2 with two consumers parallel, from the same consumer group (_--group myGroup_)
+* Observe in both cases what happens when you producen new data
+
+
+
+
+ kafka-configs --alter --add-config cleanup.policy=compact --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
+
+ kafka-configs --describe --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
+
+ kafka-configs --alter --add-config max.compaction.lag.ms=1000 --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
+ 
+ kafka-configs --alter --add-config segment.bytes=100 --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
+
