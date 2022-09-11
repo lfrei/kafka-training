@@ -52,6 +52,7 @@ Goals:
 
 Exercise:
 
+* Open the [kafka-streams](uc-iot/kafka-stream) Spring Boot Application in an IDE (e.g. Visual Studio Code or Intellij)
 * Use the template [Exercise0Stream.java](uc-iot/kafka-stream/src/main/java/com/zuehlke/training/kafka/iot/stream/Exercise0Stream.java) to implement a stream
 * Run the application with `mvn spring-boot:run` and check the log output
 * Play around with the different (stateless) operations
