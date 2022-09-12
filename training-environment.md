@@ -22,7 +22,6 @@ Services overview:
 The following service components should be installed on your training device before attending the training. A detailed installation guide will be given afterwards. 
 
 * Docker Desktop
-* Kafka CLI
 * Development: 
   * VS Code (or your IDE/text editor of choice) 
   * Current Java JDK
