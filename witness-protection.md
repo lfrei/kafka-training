@@ -146,6 +146,9 @@ Hint:
 
 sudo apt install kafkacat
 
+# Mac
+brew install kcat
+
 # Sending an empty message for the topic mysql-01-events.
 echo "key:" | kafkacat -b localhost -t mysql-01-events  -Z -K:
 ```
