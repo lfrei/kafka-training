@@ -11,3 +11,7 @@
 * [Delivery Guarantees](delivery-guarantees.md)
 * [Kafka Connect](kafka-connect.md) Getting started with source and sink connectors.
 * [UC Witness Protection](witness-protection.md)
+
+
+## Day 3
+* [Security](kafka-security.md)

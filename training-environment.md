@@ -6,7 +6,7 @@ This training comes with a predefined environment provided in multiple docker co
 
 Services overview:
 * akHQ - Manage & view data inside your Apache Kafka cluster: http://localhost:8080/
-* phpMyAdmin: http://localhost:8085/ Leave the field for the server blank and type for the **username** and **password** "**kafka-training**".
+* phpMyAdmin: http://localhost:8085/ Leave the field for the server blank and type for the **username** and **password** "**kafka-training**". The preferred language can be change on the start page.
 * Kafka Broker: localhost on port 9092
 * Kafka Zookeeper: localhost on port 2181
 * Schema Registry: localhost on port 8081
@@ -154,7 +154,7 @@ sudo apt install -y git
 ```
 
 Verification
-To check things are up and running, execute the following command. There should be a list of running containers.
+To check things are up and running, execute the following command. There should be a list of running containers. The status should be up and healthy for all containers.
 ```
 docker ps
 
@@ -182,7 +182,7 @@ kafka-connect-01
 c07f7bb51a12   confluentinc/cp-server:6.2.1                 "/etc/confluent/dock…"   9 days ago   Up 5 days             0.0.0.0:9092->9092/tcp, 0.0.0.0:9101->9101/tcp   broker
 431c9064af8f   phpmyadmin/phpmyadmin                        "/docker-entrypoint.…"   9 days ago   Up 5 days             0.0.0.0:8085->80/tcp
 ```
-In addition you can visit http://localhost:8080/ and check if everything  is running appropriately.
+In addition, you can visit http://localhost:8080/ and check if everything  is running appropriately.
 
 
 ## akHQ
