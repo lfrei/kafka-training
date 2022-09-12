@@ -22,6 +22,7 @@ Services overview:
 The following service components should be installed on your training device before attending the training. A detailed installation guide will be given afterwards. 
 
 * Docker Desktop
+* Kafka CLI
 * Development: 
   * VS Code (or your IDE/text editor of choice) 
   * Current Java JDK
@@ -184,6 +185,9 @@ c07f7bb51a12   confluentinc/cp-server:6.2.1                 "/etc/confluent/dock
 ```
 In addition, you can visit http://localhost:8080/ and check if akHQ is running appropriately if you see the node here http://localhost:8080/ui/docker-kafka-server/node.
 
+
+## Kafka CLI
+TBD
 
 ## akHQ
 Manage & view data inside your Apache Kafka ® cluster
