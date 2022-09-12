@@ -6,7 +6,7 @@ This training comes with a predefined environment provided in multiple docker co
 
 Services overview:
 * akHQ - Manage & view data inside your Apache Kafka cluster: http://localhost:8080/
-* phpMyAdmin: http://localhost:8085/ Leave the field for the server blank and type for the **username** and **password** "**kafka-training**". The preferred language can be change on the start page.
+* phpMyAdmin: http://localhost:8085/ Leave the field for the server blank and type for the **username** and **password** "**kafka-training**". The preferred language can be change on the start page (see https://linuxpip.org/change-phpmyadmin-language/).
 * Kafka Broker: localhost on port 9092
 * Kafka Zookeeper: localhost on port 2181
 * Schema Registry: localhost on port 8081
@@ -137,7 +137,7 @@ Install Docker Desktop
 Note: If you plan on using Docker Desktop commercially, please ensure you sign up for a paid account.
 See https://www.docker.com/products/docker-desktop
 
-TBD: 
+TBD: Describing for MAC
 
 ## Windows & Mac: Start the training environment
 
@@ -205,5 +205,23 @@ Stop and remove resources of your environment
 ```
 docker-compose down
 ```
-TBD: Logs
+
+Restart & Logs: You can use Docker Desktop to restart container and read logs. As an alternative you can use the command line.
+
+```
+# List all running container.
+docker ps
+
+# Example to restart Kafka Connect
+docker restart kafka-connect-01
+
+Print out all logs for Kafka Connect 
+docker logs kafka-connect-01
+
+# Follow the logs for Kafka Connect 
+docker logs -f kafka-connect-01
+
+```
+
+
 
