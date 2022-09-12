@@ -4,7 +4,7 @@
 
 Start 3 Zookeeper hosts
 
-![3 Zookeeper](/uc-cluster/Zookeepers.jpg)
+![3 Zookeeper](/img/zookeepers.jpg)
 
 ```
 docker run -d \
@@ -43,7 +43,7 @@ docker run -d \
 
 Start 3 Broker instances
 
-![3 Broker and Zookeeper](/uc-cluster/brokers.jpg)
+![3 Broker and Zookeeper](/img/brokers.jpg)
 
 ```
 docker run -d \
@@ -131,9 +131,9 @@ Create the sensor2 topic with 2 partitions and 3 replicas
 
 Generate Sensordata
 
-´´´
+```
 seq 42 | sed 's/\([0-9]\+\)/\1:\1/g' | ./kafka-console-producer --broker-list localhost:19092 --topic sensor2  --property parse.key=true --property key.separator=: && echo 'Produced 42 messages.'
-´´´
+```
 
 Read Sensordata
 ```
@@ -149,7 +149,7 @@ Consumer Groups
 * Observe in both cases what happens when you producen new data
 
 
-
+## Exercise 3: Log Compaction
 
  kafka-configs --alter --add-config cleanup.policy=compact --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
 
