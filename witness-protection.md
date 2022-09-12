@@ -106,7 +106,7 @@ Exercise:
 * Generate test events to simulate the distribution of events.
 
 Hints:
-* You can re-create the topic to update the configuration.
+* You should  re-create the topic for new configuration.
 
 Links:
 * https://docs.confluent.io/platform/current/clients/consumer.html
