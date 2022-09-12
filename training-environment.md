@@ -2,7 +2,7 @@
 [⬅️ Back to Kafka overview](README.md)
 
 ## Training environment
-This training comes with a predefined environment provided in multiple docker containers. 
+This training comes with a predefined environment provided in multiple docker containers. TBD: Link zu compose.
 
 Services overview:
 * akHQ - Manage & view data inside your Apache Kafka cluster: http://localhost:8080/
@@ -193,6 +193,7 @@ Further information can be found on the product website https://akhq.io/
 
 
 ## Troubleshooting
+TBD: Hinweis das im Compose Ordner
 Delete your local persistent data: 
 ```
 docker volume rm kafka-training_db-leach kafka-training_db_conf kafka-training_db_data
