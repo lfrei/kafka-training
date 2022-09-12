@@ -2,7 +2,9 @@
 [⬅️ Back to Kafka overview](README.md)
 
 ## Training environment
-This training comes with a predefined environment provided in multiple docker containers. TBD: Link zu compose.
+This training comes with a predefined environment provided in multiple docker containers. 
+
+TBD: Link zu compose.
 
 Services overview:
 * akHQ - Manage & view data inside your Apache Kafka cluster: http://localhost:8080/
@@ -70,49 +72,7 @@ or select the shell in the Windows Terminal
 
 ![img.png](img/te_2.png)
 
-On first run you'll be asked to setup a user.
-
-As a next step we recommend providing 8 GB of memory and 2 processor for your WSL environment. To achieve that create a file **.wslconfig** in your home folder and copy the content below.
-
-https://docs.microsoft.com/en-us/windows/wsl/wsl-config#wslconfig
-```
-# Settings apply across all Linux distros running on WSL 2
-[wsl2]
-
-# Limits VM memory to use no more than 4 GB, this can be set as whole numbers using GB or MB
-memory=8GB
-
-# Sets the VM to use two virtual processors
-processors=2
-
-# Specify a custom Linux kernel to use with your installed distros. The default kernel used can be found at #https://github.com/microsoft/WSL2-Linux-Kernel
-#kernel=C:\\temp\\myCustomKernel
-
-# Sets additional kernel parameters, in this case enabling older Linux base images such as Centos 6
-kernelCommandLine = vsyscall=emulate
-
-# Sets amount of swap storage space to 8GB, default is 25% of available RAM
-swap=8GB
-
-# Sets swapfile path location, default is %USERPROFILE%\AppData\Local\Temp\swap.vhdx
-swapfile=C:\\temp\\wsl-swap.vhdx
-
-# Disable page reporting so WSL retains all allocated memory claimed from Windows and releases none back when free
-pageReporting=false
-
-# Turn off default connection to bind WSL 2 localhost to Windows localhost
-localhostforwarding=true
-
-# Disables nested virtualization
-nestedVirtualization=false
-
-# Turns on output console showing contents of dmesg when opening a WSL 2 distro for debugging
-debugConsole=true
-```
-
-Here is an example of the configuration and the provided memory. 
-
-![img.png](img/te_7.JPG)
+On first run you'll be asked to set up a user.
 
 Install Docker Desktop
 Note: If you plan on using Docker Desktop commercially, please ensure you sign up for a paid account. 
@@ -137,7 +97,8 @@ Install Docker Desktop
 Note: If you plan on using Docker Desktop commercially, please ensure you sign up for a paid account.
 See https://www.docker.com/products/docker-desktop
 
-TBD: Describing for MAC
+For Mac you should choose 8 GB of memory like depicted in the picture.
+![img.png](img/te_8.JPG)
 
 ## Windows & Mac: Start the training environment
 
@@ -193,11 +154,8 @@ Further information can be found on the product website https://akhq.io/
 
 
 ## Troubleshooting
-TBD: Hinweis das im Compose Ordner
-Delete your local persistent data: 
-```
-docker volume rm kafka-training_db-leach kafka-training_db_conf kafka-training_db_data
-```
+💡 All Docker Compose commands must be executed in the top folder of your training material.
+
 Restart your environment: 
 ```
 docker-compose restart
@@ -205,6 +163,11 @@ docker-compose restart
 Stop and remove resources of your environment
 ```
 docker-compose down
+```
+
+Delete your local persistent data:
+```
+docker volume rm kafka-training_db-leach kafka-training_db_conf kafka-training_db_data
 ```
 
 Restart & Logs: You can use Docker Desktop to restart container and read logs. As an alternative you can use the command line.
@@ -223,6 +186,16 @@ docker logs kafka-connect-01
 docker logs -f kafka-connect-01
 
 ```
+
+Using WSL 2.0 and cannot connect to Kafka broker with Spring Boot. Error: *Bootstrap broker localhost (id : -1 rack: null) disconnected*
+```
+# Get the external interface IP adress on Ubuntu terminal
+ip addr | grep eth0
+
+#  Open PowerShell as a Administrator and add a port proxy
+netsh interface portproxy add v4tov4 listenport=9092 listenaddress=0.0.0.0 connectport=9092 connectaddress=YOUR_IP_OF_EXTERNAL_INTERFACE
+```
+Link: https://docs.microsoft.com/en-us/windows/wsl/networking
 
 
 
