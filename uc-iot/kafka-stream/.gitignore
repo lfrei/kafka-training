@@ -13,4 +13,4 @@ target/
 .vscode/
 
 ### Avro ###
-src/generated
+/src/main/java/**/SensorMeasurement.java
