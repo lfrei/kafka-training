@@ -4,7 +4,7 @@
 
 Start 3 Zookeeper hosts
 
-![3 Zookeeper](.\uc-cluster\zookeepers.jpg)
+![3 Zookeeper](/uc-cluster/Zookeepers.jpg)
 
 ```
 docker run -d \
@@ -43,7 +43,7 @@ docker run -d \
 
 Start 3 Broker instances
 
-![3 Broker and Zookeeper](.\uc-cluster\brokers.jpg)
+![3 Broker and Zookeeper](/uc-cluster/brokers.jpg)
 
 ```
 docker run -d \
