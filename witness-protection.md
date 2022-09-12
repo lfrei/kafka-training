@@ -138,12 +138,11 @@ Exercise:
 * Using the tool **kafkacat** to send a Tombstone message. The Kafka console producer cannot generate empty messages.
 
 Hint:
-* After sending the tombstone message is final normal message required.
+* After sending the tombstone message a final normal message with key and value required.
 * Examples for kafkacat are given below.
 
 ```
 # Install on Ubutntu if required
-
 sudo apt install kafkacat
 
 # Mac
