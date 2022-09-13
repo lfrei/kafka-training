@@ -11,11 +11,11 @@ import org.springframework.kafka.config.KafkaStreamsConfiguration;
 
 import java.util.HashMap;
 
-@Configuration
-@EnableKafkaStreams
+//@Configuration
+//@EnableKafkaStreams
 public class KafkaStreamConfig {
 
-	@Bean(name = KafkaStreamsDefaultConfiguration.DEFAULT_STREAMS_CONFIG_BEAN_NAME)
+	//@Bean(name = KafkaStreamsDefaultConfiguration.DEFAULT_STREAMS_CONFIG_BEAN_NAME)
 	public KafkaStreamsConfiguration kafkaStreamConfig() {
 
 		HashMap<String, Object> props = new HashMap<String, Object>();

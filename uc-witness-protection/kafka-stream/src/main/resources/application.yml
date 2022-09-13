@@ -1,13 +1,10 @@
-logging:
-  pattern:
-    console: "[Kafka Stream] %clr(%d{HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(---){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
-  
 spring:
-  main:
-    banner-mode: OFF
   kafka:
-    listener:
-      missing-topics-fatal: false
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    bootstrap-servers: localhost:9092
+    streams:
+      application-id: witnessprotection-kafka-stream
+      properties:
+        schema.registry.url: http://localhost:8081
+        auto.offset.reset: earliest
+        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde

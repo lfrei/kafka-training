@@ -142,7 +142,7 @@ Hint:
 * Examples for kafkacat are given below.
 
 ```
-# Install on Ubutntu if required
+# Install on Ubutntu 
 sudo apt install kafkacat
 
 # Mac

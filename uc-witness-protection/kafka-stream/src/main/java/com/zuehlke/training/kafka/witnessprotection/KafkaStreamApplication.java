@@ -2,13 +2,14 @@ package com.zuehlke.training.kafka.witnessprotection;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.kafka.annotation.EnableKafkaStreams;
 
 @SpringBootApplication
+@EnableKafkaStreams
 public class KafkaStreamApplication {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext run = SpringApplication.run(KafkaStreamApplication.class, args);
+		SpringApplication.run(KafkaStreamApplication.class, args);
 	}
 
 }
