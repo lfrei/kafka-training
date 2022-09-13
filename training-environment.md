@@ -134,13 +134,6 @@ See https://www.docker.com/products/docker-desktop
 For Mac you should choose 8 GB of memory like depicted in the picture.
 ![img.png](img/te_8.JPG)
 
-
-## akHQ
-Manage & view data inside your Apache Kafka ® cluster
-![img.png](img/akhq.JPG)
-
-Further information can be found on the product website https://akhq.io/
-
 ## Services overview
 * akHQ - Manage & view data inside your Apache Kafka cluster: http://localhost:8080/
 * phpMyAdmin: http://localhost:8085/ Leave the field for the server blank and type for the **username** and **password** "**kafka-training**". The preferred language can be change on the start page (see https://linuxpip.org/change-phpmyadmin-language/).
@@ -151,6 +144,12 @@ Further information can be found on the product website https://akhq.io/
 * Kafka Connect: localhost on port 8083
 * ksqlDB: localhost on port 8088
 * MariaDB: localhost on port 3306
+
+## akHQ
+Manage & view data inside your Apache Kafka ® cluster
+![img.png](img/akhq.JPG)
+
+Further information can be found on the product website https://akhq.io/
 
 ## Troubleshooting
 💡 All Docker Compose commands must be executed in the top folder of your training material.
