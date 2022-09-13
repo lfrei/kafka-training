@@ -10,16 +10,16 @@ Start the application and have a look at the StreamsConfig output:
 
 ```
 org.apache.kafka.streams.StreamsConfig   : StreamsConfig values: 
-    ...
-	bootstrap.servers = [localhost:9092]
-	processing.guarantee = ?
+...
+bootstrap.servers = [localhost:9092]
+processing.guarantee = ?
 ```
 
 📝 Can you see what the default processing guarantee is? What does it mean?
 
 ## Configure processing guarantee
 
-Configure the `processing.guarantee` property in the `application.yaml` file of the stream application:
+Configure the `processing.guarantee` property in the [application.yaml](uc-iot/kafka-stream/src/main/resources/application.yaml) file of the stream application:
 
 ```
 spring:
