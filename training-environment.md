@@ -4,18 +4,52 @@
 ## Training environment
 This training comes with a predefined environment provided in multiple docker containers. 
 
-TBD: Link zu compose.
+## Windows & Mac: Start the training environment
+💡 If you want to get started you can execute the following steps. Detailed instruction to fulfill all system requirements are described further down.
 
-Services overview:
-* akHQ - Manage & view data inside your Apache Kafka cluster: http://localhost:8080/
-* phpMyAdmin: http://localhost:8085/ Leave the field for the server blank and type for the **username** and **password** "**kafka-training**". The preferred language can be change on the start page (see https://linuxpip.org/change-phpmyadmin-language/).
-* Kafka Broker: localhost on port 9092
-* Kafka Zookeeper: localhost on port 2181
-* Schema Registry: localhost on port 8081
-* Rest Proxy: localhost on port 8082 
-* Kafka Connect: localhost on port 8083
-* ksqlDB: localhost on port 8088
-* MariaDB: localhost on port 3306
+Open a shell into your Ubuntu in WSL or Mac and run the following command to check out the course repository and start the environment.
+```
+git clone https://github.com/lfrei/kafka-training.git
+cd kafka-training
+docker-compose up -d
+```
+
+💡 If  Git is need to be installed on Ubuntu use the following command: 
+```
+sudo apt install -y git
+```
+
+Verification
+To check things are up and running, execute the following command. There should be a list of running containers. The status should be up and healthy for all containers.
+```
+docker ps
+
+Example output
+CONTAINER ID   IMAGE                                        COMMAND                  CREATED      STATUS                PORTS
+NAMES
+a9308b57635b   tchiotludo/akhq                              "docker-entrypoint.s…"   6 days ago   Up 5 days             0.0.0.0:8080->8080/tcp
+kafka-training_akhq_1
+b31ceaeefe17   confluentinc/ksqldb-examples:6.2.1           "bash -c 'echo Waiti…"   6 days ago   Up 5 days
+ksql-datagen
+7603bc35e7a4   confluentinc/cp-schema-registry:6.2.1        "/etc/confluent/dock…"   6 days ago   Up 5 days             0.0.0.0:8081->8081/tcp
+schema-registry
+2c500a51d444   confluentinc/cp-ksqldb-cli:6.2.1             "/bin/sh"                9 days ago   Up 5 days
+ksqldb-cli
+7cbed5d931ce   confluentinc/cp-ksqldb-server:6.2.1          "/etc/confluent/dock…"   9 days ago   Up 5 days             0.0.0.0:8088->8088/tcp
+ksqldb-server
+83cbf549e838   ghcr.io/lfrei/kafka-training/motor:latest    "/cnb/process/web"       9 days ago   Up 5 days
+kafka-training_motor_1
+bea7e34ad4b8   ghcr.io/lfrei/kafka-training/sensor:latest   "/cnb/process/web"       9 days ago   Up 5 days
+kafka-training_sensor_1
+703cf9a5cd61   confluentinc/cp-kafka-rest:6.2.1             "/etc/confluent/dock…"   9 days ago   Up 5 days             0.0.0.0:8082->8082/tcp
+rest-proxy
+a7a64ae57f86   confluentinc/cp-kafka-connect:5.4.9          "/bin/bash -c '# JDB…"   9 days ago   Up 5 days (healthy)   0.0.0.0:8083->8083/tcp, 9092/tcp
+kafka-connect-01
+c07f7bb51a12   confluentinc/cp-server:6.2.1                 "/etc/confluent/dock…"   9 days ago   Up 5 days             0.0.0.0:9092->9092/tcp, 0.0.0.0:9101->9101/tcp   broker
+431c9064af8f   phpmyadmin/phpmyadmin                        "/docker-entrypoint.…"   9 days ago   Up 5 days             0.0.0.0:8085->80/tcp
+```
+In addition, you can visit http://localhost:8080/ and check if akHQ is running appropriately if you see the node here http://localhost:8080/ui/docker-kafka-server/node.
+
 
 💡 The whole environment is quite main memory intensive. We recommend a computer with at least 16 GB of working memory. 
 
@@ -100,51 +134,6 @@ See https://www.docker.com/products/docker-desktop
 For Mac you should choose 8 GB of memory like depicted in the picture.
 ![img.png](img/te_8.JPG)
 
-## Windows & Mac: Start the training environment
-
-Open a shell into your Ubuntu or Mac and run the following command to check out the course repository and start the environment.
-```
-git clone https://github.com/lfrei/kafka-training.git
-cd kafka-training
-docker-compose up -d
-```
-
-💡 If  Git is need to be installed on Ubuntu use the following command: 
-```
-sudo apt install -y git
-```
-
-Verification
-To check things are up and running, execute the following command. There should be a list of running containers. The status should be up and healthy for all containers.
-```
-docker ps
-
-Example output
-CONTAINER ID   IMAGE                                        COMMAND                  CREATED      STATUS                PORTS
-NAMES
-a9308b57635b   tchiotludo/akhq                              "docker-entrypoint.s…"   6 days ago   Up 5 days             0.0.0.0:8080->8080/tcp
-kafka-training_akhq_1
-b31ceaeefe17   confluentinc/ksqldb-examples:6.2.1           "bash -c 'echo Waiti…"   6 days ago   Up 5 days
-ksql-datagen
-7603bc35e7a4   confluentinc/cp-schema-registry:6.2.1        "/etc/confluent/dock…"   6 days ago   Up 5 days             0.0.0.0:8081->8081/tcp
-schema-registry
-2c500a51d444   confluentinc/cp-ksqldb-cli:6.2.1             "/bin/sh"                9 days ago   Up 5 days
-ksqldb-cli
-7cbed5d931ce   confluentinc/cp-ksqldb-server:6.2.1          "/etc/confluent/dock…"   9 days ago   Up 5 days             0.0.0.0:8088->8088/tcp
-ksqldb-server
-83cbf549e838   ghcr.io/lfrei/kafka-training/motor:latest    "/cnb/process/web"       9 days ago   Up 5 days
-kafka-training_motor_1
-bea7e34ad4b8   ghcr.io/lfrei/kafka-training/sensor:latest   "/cnb/process/web"       9 days ago   Up 5 days
-kafka-training_sensor_1
-703cf9a5cd61   confluentinc/cp-kafka-rest:6.2.1             "/etc/confluent/dock…"   9 days ago   Up 5 days             0.0.0.0:8082->8082/tcp
-rest-proxy
-a7a64ae57f86   confluentinc/cp-kafka-connect:5.4.9          "/bin/bash -c '# JDB…"   9 days ago   Up 5 days (healthy)   0.0.0.0:8083->8083/tcp, 9092/tcp
-kafka-connect-01
-c07f7bb51a12   confluentinc/cp-server:6.2.1                 "/etc/confluent/dock…"   9 days ago   Up 5 days             0.0.0.0:9092->9092/tcp, 0.0.0.0:9101->9101/tcp   broker
-431c9064af8f   phpmyadmin/phpmyadmin                        "/docker-entrypoint.…"   9 days ago   Up 5 days             0.0.0.0:8085->80/tcp
-```
-In addition, you can visit http://localhost:8080/ and check if akHQ is running appropriately if you see the node here http://localhost:8080/ui/docker-kafka-server/node.
-
 
 ## akHQ
 Manage & view data inside your Apache Kafka ® cluster
@@ -152,6 +141,16 @@ Manage & view data inside your Apache Kafka ® cluster
 
 Further information can be found on the product website https://akhq.io/
 
+## Services overview
+* akHQ - Manage & view data inside your Apache Kafka cluster: http://localhost:8080/
+* phpMyAdmin: http://localhost:8085/ Leave the field for the server blank and type for the **username** and **password** "**kafka-training**". The preferred language can be change on the start page (see https://linuxpip.org/change-phpmyadmin-language/).
+* Kafka Broker: localhost on port 9092
+* Kafka Zookeeper: localhost on port 2181
+* Schema Registry: localhost on port 8081
+* Rest Proxy: localhost on port 8082 
+* Kafka Connect: localhost on port 8083
+* ksqlDB: localhost on port 8088
+* MariaDB: localhost on port 3306
 
 ## Troubleshooting
 💡 All Docker Compose commands must be executed in the top folder of your training material.
