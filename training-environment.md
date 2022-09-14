@@ -96,6 +96,12 @@ WSL automatic updates are on.
 
 Kernel version: 5.10.60.1
 
+If Ubuntu is already installed, please ensure that it is using WSL 2. You can check this with the following command.
+
+```
+wsl -l -v
+```
+
 Install Windows Terminal (optional)
 See https://docs.microsoft.com/en-us/windows/terminal/install
 Optional but very nice to use 😊
@@ -128,6 +134,13 @@ This is to enable direct access to Docker from your distribution and add the nec
 Confirm all changes to Docker Desktop with the press of “Apply & Restart”
 
 ![img.png](img/te_6.png)
+
+It should be now possible to run the command "docker ps" in your Ubuntu shell. If the command can be executed but you are lacking  permission, your user need to be added to the docker group.
+
+```
+sudo usermod -a -G docker your_user
+```
+
 
 ## Step-by-Step Guide: Preparation of Notebook for Mac Users
 
