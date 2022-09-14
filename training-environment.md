@@ -5,7 +5,7 @@
 This training comes with a predefined environment provided in multiple docker containers. 
 
 ## Windows with WSL 2.0 & Mac: Start the training environment
-💡 If you want to get started you can execute the following steps. Detailed instruction to fulfill all system requirements are described further down.
+Execute the following steps to start the training environment. Detailed instruction to **fulfill all system requirements** are described further down.
 
 Open a shell and run the following commands to check out the course repository and start the environment.
 ```
