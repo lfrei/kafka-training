@@ -207,7 +207,7 @@ Using WSL 2.0 and cannot connect to Kafka broker with Spring Boot. Error: *Boots
 # Get the external interface IP adress on Ubuntu terminal
 ip addr | grep eth0
 
-#  Open PowerShell as a **Administrator** and add a port proxy
+#  Open PowerShell as a Administrator and add a port proxy
 netsh interface portproxy add v4tov4 listenport=9092 listenaddress=0.0.0.0 connectport=9092 connectaddress=YOUR_IP_OF_EXTERNAL_INTERFACE
 ```
 Link: https://docs.microsoft.com/en-us/windows/wsl/networking
