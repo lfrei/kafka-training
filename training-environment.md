@@ -78,13 +78,18 @@ https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/user-guide/ne
 Install WSL
 https://docs.microsoft.com/en-us/windows/wsl/install
 In a shell with admin permissions run
+```
 wsl --install
+```
 
 Ensure you're running WSL 2 and not the legacy WSL 1
+```
 wsl --status
+```
+
 Example output
 Default Distribution: Ubuntu
-Default Version: 2
+**Default Version: 2**
 
 Windows Subsystem for Linux was last updated on 8 Nov 2021
 WSL automatic updates are on.
