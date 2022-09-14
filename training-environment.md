@@ -5,8 +5,6 @@
 This training comes with a predefined environment provided in multiple docker containers. 
 
 ## Windows with WSL 2.0 & Mac: Start the training environment
-Execute the following steps to start the training environment. Detailed instruction to **fulfill all system requirements** are described further down.
-
 Open a shell and run the following commands to check out the course repository and start the environment.
 ```
 git clone https://github.com/lfrei/kafka-training.git
@@ -14,6 +12,7 @@ cd kafka-training
 docker-compose up -d
 ```
 
+💡 Detailed instruction to **fulfill all system requirements** are described further down.
 💡 If  Git is need to be installed on Ubuntu use the following command: 
 ```
 sudo apt install -y git
