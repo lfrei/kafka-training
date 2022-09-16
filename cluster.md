@@ -151,11 +151,20 @@ Consumer Groups
 
 ## Exercise 3: Log Compaction
 
- kafka-configs --alter --add-config cleanup.policy=compact --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
+In ths exercise, we configure the sensor topic for log compaction. For a production like setup you would most probably use the parameter _min.cleanable.dirty.ratio_. To check the log compaction feature in our lab, you should set the following paramters:
 
- kafka-configs --describe --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
+```
+ kafka-configs --alter --add-config cleanup.policy=compact --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
 
  kafka-configs --alter --add-config max.compaction.lag.ms=1000 --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
  
- kafka-configs --alter --add-config segment.bytes=100 --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
+ kafka-configs --alter --add-config segment.bytes=256 --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
+```
 
+```
+  kafka-configs --describe --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
+```
+
+```
+seq 5 | sed 's/\([0-9]\+\)/\1:\1/g' | ./kafka-console-producer --broker-list localhost:19092 --topic sensor  --property parse.key=true --property key.separator=: && echo 'Produced 5 messages.'
+```
