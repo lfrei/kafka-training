@@ -62,7 +62,7 @@ The following service components should be installed on your training device bef
   * VS Code (or your IDE/text editor of choice) 
   * Current Java JDK
   * Git
-  * Maven
+  * Maven (if not already included in IDE)
 * Optional: HTTP client to send requests like Postman
 
 In addition, required for Windows users:
