@@ -71,28 +71,7 @@ Links:
 💡 If you prefer the console to access to the databases: mysql --protocol=TCP -u kafka-training -pkafka-training events
 
 
-### Exercise 2: Use Kafka streams to forward the events to tax department
-
-Goals:
-* Include Kafka streams to the existing environment.
-* Create a topic for the tax department and forward every event which contains "<eCH-0020:moveIn>" to the new topic.
-
-Exercise:
-
-* Create a new topic for the tax department with the name **"tax-department"**
-* Use the template [Exercise2Stream.java](uc-witness-protection/kafka-stream/src/main/java/com/zuehlke/training/kafka/witnessprotection/broker/stream/Exercise2Stream.java) to implement a stream
-* Run the application and check the log output
-* Generate events which fulfill the criteria to be in the topics **"tax-department"** and some who doesn't.
-
-Hints:
-
-* Check the course material of the iot use case if you need to refresh your knowledge about streams.
-
-Links:
-* https://developer.confluent.io/tutorials/filter-a-stream-of-events/confluent.html
-
-
-### Exercise 3: Consume the events with consumer groups
+### Exercise 2: Consume the events with consumer groups
 
 Goals:
 
@@ -111,7 +90,7 @@ Hints:
 Links:
 * https://docs.confluent.io/platform/current/clients/consumer.html
 
-### Exercise 4: Using a kafka message key
+### Exercise 3: Using a kafka message key
 Goals:
 * Configuring a Kafka message key for the events.
 * The key will later be used to identify the person. 
@@ -124,6 +103,26 @@ Exercise:
 Links:
 * https://www.confluent.io/blog/kafka-connect-deep-dive-jdbc-source-connector/#setting-kafka-message-key
 * https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html
+
+### Exercise 4: Use Kafka streams to forward the events to tax department
+
+Goals:
+* Include Kafka streams to the existing environment.
+* Create a topic for the tax department and forward every event which contains "<eCH-0020:moveIn>" to the new topic.
+
+Exercise:
+
+* Create a new topic for the tax department with the name **"tax-department"**
+* Use the template [Exercise4Stream.java](uc-witness-protection/kafka-stream/src/main/java/com/zuehlke/training/kafka/witnessprotection/broker/stream/Exercise4Stream.java) to implement a stream
+* Run the application and check the log output
+* Generate events which fulfill the criteria to be in the topics **"tax-department"** and some who doesn't.
+
+Hints:
+
+* Check the course material of the iot use case if you need to refresh your knowledge about streams.
+
+Links:
+* https://developer.confluent.io/tutorials/filter-a-stream-of-events/confluent.html
 
 ### Exercise 5: Compacting + Tombstone Message
 The double agent is done with his job. We need to remove all events related to his Kafka Message Key.
