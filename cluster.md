@@ -165,6 +165,22 @@ In ths exercise, we configure the sensor topic for log compaction. For a product
   kafka-configs --describe --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
 ```
 
+
+Now, you start producing data. Note that we send data to the kafka console consumer in the form key:value with the same key as the value, for example: 1:1  2:2 etc.
+
 ```
 seq 5 | sed 's/\([0-9]\+\)/\1:\1/g' | ./kafka-console-producer --broker-list localhost:19092 --topic sensor  --property parse.key=true --property key.separator=: && echo 'Produced 5 messages.'
+```
+
+```
+./kafka-console-consumer --bootstrap-server localhost:19092,localhost:29092,localhost:39092 --from-beginning --topic sensor
+```
+
+Lab:
+* Observe what happens if you send the same data several time
+* Observe what happens if you send now a sequence of 9 entries and read the data again
+* You might also send manual data and check what happens on the topic
+
+```
+./kafka-console-producer --broker-list localhost:19092 --topic sensor  --property parse.key=true --property key.separator=:
 ```
