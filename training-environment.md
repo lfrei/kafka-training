@@ -13,6 +13,7 @@ docker-compose up -d
 ```
 
 💡 Detailed instruction to **fulfill all system requirements** are described further down.
+
 💡 If  Git is need to be installed on Ubuntu use the following command: 
 ```
 sudo apt install -y git
