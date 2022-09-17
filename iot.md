@@ -10,8 +10,8 @@ docker compose up -d
 
 For the IoT use case, there are two types of containers that simulate IoT devices in a plant:
 
-* A sensor, that sends measurements in a fixed interval
-* A motor, that sends an update if its state changes
+* A [sensor](uc-iot/sensor), that sends measurements in a fixed interval
+* A [motor](uc-iot/motor), that sends an update if its state changes
 
 In the [Docker Compose](docker-compose.yml) one of each is preconfigured.
 If you want to configure your own sensor / motor you have the following options:
@@ -39,7 +39,7 @@ A motor is changing its state at a random time. You can specify the states, as w
 | MOTOR_MAX_INTERVAL_MS | Max Interval duration in ms (default: 30000)         |
 | MOTOR_STATES_0        | State of the motor (default: on)                     |
 | MOTOR_STATES_1        | State of the motor (default: off)                    |
-| MOTOR_STATES_2        | State of the motor                                   |
+| MOTOR_STATES_2..n     | State of the motor                                   |
 
 ## Exercises
 
