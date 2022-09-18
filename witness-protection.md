@@ -4,14 +4,15 @@
 * A double agent moves to canton Zurich to collect evidence of a criminal organization. 
 * On his journey he is generating **events** which are stored in a traditional database using the Swiss **ech20 standard** defined in XML. An event can be moving-in or moving-out. 
 * You work for the canton Zurich as an IT professional and your task is to **ingest and process the events with Kafka**.
-* As soon as the double agent is **done**, we need to ensure the **no events** are stored anymore in Kafka. 
+* As soon as the double agent is **done**, we need to ensure that **no events** are stored in Kafka anymore. 
 
 
 ## Initial Setup
-* There is a MariaDB database prepared with test data.
-* The database contains simplified events based on Swiss **eCH-0020** standard in XML.
-* The folder **uc-witness-protection** contains the source for Kafka streams and material to support the exercises.
-* The Docker container **kafka-connect-01** contains Kafka Connect and is utilised in this exercise.
+* 1: **MariaDB** contains all events. It is already prepared with test data of simplified events. JDBC URL: jdbc:mysql://mariadb:3306/events
+* 2: **Kafka connect** runs in a Docker container with the name kafka-connect-01. It will be used to ingest the events via JDBC connector. 
+* 3. Using **Kafka Streams** to write the data to other topics. 
+
+The folder **uc-witness-protection** contains the material to support the exercises.
 
 ![img.png](img/uc-wp-1.JPG)
 
