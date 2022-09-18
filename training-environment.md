@@ -204,6 +204,10 @@ docker logs -f kafka-connect-01
 
 ```
 
+Another option to access logs is by clicking on the container in Docker Desktop.
+
+![img.png](img/te_9.JPG)
+
 Using WSL 2.0 and cannot connect to Kafka broker with Spring Boot. Error: *Bootstrap broker localhost (id : -1 rack: null) disconnected*
 ```
 # Get the external interface IP adress on Ubuntu terminal
@@ -217,7 +221,7 @@ Link: https://docs.microsoft.com/en-us/windows/wsl/networking
 
 
 
-You see the following error when starting docker desktop on windows, or when you start ubuntu:
+You see the following error when starting docker desktop on Windows, or when you start Ubuntu:
 
 ...
 
@@ -227,7 +231,7 @@ Get-Service vmcompute | Restart-Service
 ```
 
 
-Docker desktop for windows: You don't see the ubuntu slider in Resources -> WSL integration:
+Docker desktop for windows: You don't see the Ubuntu slider in Resources -> WSL integration:
 
 ```
 PS C:\Users\U1> wsl -l -v
