@@ -28,9 +28,8 @@ Goals:
 
 Exercise:
 
-* Open http://localhost:8085/ to explore the data in the database.
- 💡 To Login please  the field for the server blank and type for the **username** and **password** "**kafka-training**".
-* Use the template [Exercise0jdbc-connector.json](/uc-witness-protection/connectors/Exercise0jdbc-connector.json) to create a Kafka connector sending a post request with the tool of your choice (curl, Postman,etc.).
+* Open http://localhost:8085/ to explore the data in the database.To Login please leave the field for the server blank and type for the **username** and **password** "**kafka-training**".
+* Examine the template [Exercise0jdbc-connector.json](/uc-witness-protection/connectors/Exercise0jdbc-connector.json) and create a Kafka connector sending a post request with the tool of your choice (curl, Postman,etc.).
 * Discover the created events in Kafka via your preferred way.
 * Create new test events with pypMyAdmin. It is enough to type random information for the filed "XML_EVENT".
 * Why is this configuration not the most suitable for our scenario?
