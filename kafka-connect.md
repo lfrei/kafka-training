@@ -2,24 +2,25 @@
 
 ## First source connector
 
+💡 **Important:** Every command needs to be executed from the Kafka Broker **Docker Container**.
 Let's get started and create a file topic.
 ```
-kafka-topics.sh --zookeeper localhost:2181 --create --topic file-topic --partitions 3 --replication-factor 1
+docker exec -it broker bash
+kafka-topics --zookeeper zookeeper:2181 --create --topic file-topic3 --partitions 3 --replication-factor 1
 # to describe a topic
-kafka-topics.sh --zookeeper localhost:2181 --topic file-topic --describe
+kafka-topics.sh --zookeeper zookeeper:2181 --topic file-topic --describe
 ```
 
 Access to connect container and create an empty file.
 
 ```
-docker exec -it kafka-connect-01 bash  
 # Create a file and give permission 
 touch /tmp/input && chmod 777 /tmp/input
 ```
 
 Let's register the connector.
 ```
-curl -X POST http://localhost:8083/connectors \
+curl -X POST http://kafka-connect-01:8083/connectors \
 -H 'Accept: */*' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -40,11 +41,11 @@ curl -X POST http://localhost:8083/connectors \
 Let's investigate the connectors.
 ```
 # Show all connectors
-curl http://localhost:8083/connectors
+curl http://kafka-connect-01:8083/connectors
 # Check our specific connector
-curl http://localhost:8083/connectors/file_source_connector
+curl http://kafka-connect-01:8083/connectors/file_source_connector
 # Check the status of our connector
-curl  'http://localhost:8083/connectors/file_source_connector/status'
+curl  'http://kafka-connect-01:8083/connectors/file_source_connector/status'
 ```
 
 Let's generate data and investigate our topic
@@ -53,14 +54,14 @@ Let's generate data and investigate our topic
 echo "My new data." >> /tmp/input
 
 # Outside the container. Alternativ you can use the akhq UI. 
-kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic file-topic --from-beginning
+kafka-console-consumer.sh --bootstrap-server broker:9092 --topic file-topic --from-beginning
 ```
 
 Create sink connector and consumer the data
 
 ```
 # Inside the container
-curl -X POST http://localhost:8083/connectors \
+curl -X POST http://kafka-connect-01:8083/connectors \
 -H 'Accept: */*' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -88,10 +89,10 @@ kafka-console-producer.sh --bootstrap-server localhost:9092 --topic file-topic
 Delete both connectors to clean up.
 ```
 # Inside the container
-curl -X DELETE http://localhost:8083/connectors/file_source_connector
-curl -X DELETE http://localhost:8083/connectors/file_sink_connector
+curl -X DELETE http://kafka-connect-01:8083/connectors/file_source_connector
+curl -X DELETE http://kafka-connect-01:8083/connectors/file_sink_connector
 
 # The result should be empty now.
-curl http://localhost:8083/connectors
+curl http://kafka-connect-01:8083/connectors
 ```
 
