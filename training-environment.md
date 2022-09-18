@@ -124,6 +124,8 @@ This is to enable direct access to Docker from your distribution and add the nec
 
 ![img.png](img/te_4.png)
 
+(you don't see this slider? => see below troubleshooting)
+
 Confirm all changes to Docker Desktop with the press of “Apply & Restart”
 
 ![img.png](img/te_6.png)
@@ -224,4 +226,26 @@ Start a powershell as administrator
 Get-Service vmcompute | Restart-Service
 ```
 
+
+Docker desktop for windows: You don't see the ubuntu slider in Resources -> WSL integration:
+
+```
+PS C:\Users\U1> wsl -l -v
+  NAME                   STATE           VERSION
+* docker-desktop-data    Running         2
+  docker-desktop         Running         2
+  Ubuntu-20.04           Stopped         1
+PS C:\Users\U1> wsl --set-version Ubuntu-20.04 2
+Conversion in progress, this may take a few minutes...
+For information on key differences with WSL 2 please visit https://aka.ms/wsl2
+Conversion complete.
+PS C:\Users\U1> wsl --set-default  Ubuntu-20.04
+PS C:\Users\U1> wsl -l -v
+  NAME                   STATE           VERSION
+* Ubuntu-20.04           Running         2
+  docker-desktop         Running         2
+  docker-desktop-data    Running         2
+PS C:\Users\U1>
+```
+* reinstall docker desktop
 
