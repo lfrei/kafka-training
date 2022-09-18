@@ -1,9 +1,11 @@
 # Witness Protection
 
 ## Scenario in short
-* A **double agent** moves to canton Zurich and start to work for an underground organisation based in **Langstrasse**. His goal is to collect evidence to put them in jail. Afterwards he needs witness protection and none of his data should be available.
-* On his journey the double agent is generating events in the canton like **moving**, **marriage**, etc. which are stored in a traditional database using the Swiss **ech20** standard defined in XML.
-* You work for the canton Zurich as an IT professional and your task is to ingest and process the canton events with Kafka. 
+* A double agent moves to canton Zurich to collect evidence of a criminal organization. 
+* On his journey he is generating **events** which are stored in a traditional database using the Swiss **ech20 standard** defined in XML. An event can be moving-in or moving-out. 
+* You work for the canton Zurich as an IT professional and your task is to **ingest and process the events with Kafka**.
+* As soon as the double agent is **done**, we need to ensure the **no events** are stored anymore in Kafka. 
+
 
 ## Initial Setup
 * There is a MariaDB database prepared with test data.
