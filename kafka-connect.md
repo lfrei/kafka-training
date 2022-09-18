@@ -1,5 +1,4 @@
 # Kafka Connect
-TODO: Final wording.
 
 ## First source connector
 
