@@ -117,7 +117,7 @@ Goals:
 Exercise:
 
 * Create a new topic for the tax department with the name **"tax-department"**
-* Use the template [Exercise4Stream.java](uc-witness-protection/kafka-stream/src/main/java/com/zuehlke/training/kafka/witnessprotection/broker/stream/Exercise4Stream.java) to implement a stream
+* Use the template [Exercise4Stream.java](uc-witness-protection/kafka-stream/src/main/java/com/zuehlke/training/kafka/witnessprotection/stream/Exercise4Stream.java) to implement a stream
 * Run the application and check the log output
 * Generate events which fulfill the criteria to be in the topics **"tax-department"** and some who doesn't.
 
@@ -141,7 +141,7 @@ Exercise:
 * Using the tool **kafkacat** to send a Tombstone message. The Kafka console producer cannot generate empty messages.
 
 Hint:
-* After sending the tombstone message a final normal message with key and value required.
+* After sending the tombstone message a final normal message with key and value required to trigger compaction.
 * Examples for kafkacat are given below.
 
 ```
