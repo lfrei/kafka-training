@@ -1,0 +1,12 @@
+{
+  "name": "jdbc_source_mysql_01",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+    "connection.url": "jdbc:mysql://mariadb:3306/events",
+    "connection.user": "kafka-training",
+    "connection.password": "kafka-training",
+    "topic.prefix": "mysql-01-",
+    "incrementing.column.name": "ID",
+    "mode":"incrementing"
+  }
+}
