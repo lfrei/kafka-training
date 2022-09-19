@@ -9,7 +9,7 @@
 
 ## Day 2
 * [Delivery Guarantees](delivery-guarantees.md)
-* [Kafka Connect](kafka-connect.md) Getting started with source and sink connectors.
+* [Kafka Connect](kafka-connect.md)
 * [UC Witness Protection](witness-protection.md)
 
 

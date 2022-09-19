@@ -1,5 +1,7 @@
 # Schema Registry
 
+[⬅️ Back to Kafka overview](README.md)
+
 Connect to the schema registry
 
 ```

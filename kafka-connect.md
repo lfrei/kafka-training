@@ -1,5 +1,7 @@
 # Kafka Connect
 
+[⬅️ Back to Kafka overview](README.md)
+
 ## First source connector
 
 💡 **Important:** Every command needs to be executed from the Kafka Broker **Docker Container**.

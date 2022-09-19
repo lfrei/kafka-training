@@ -1,5 +1,7 @@
 # Delivery Guarantees
 
+[⬅️ Back to Kafka overview](README.md)
+
 Configure delivery guarantees for your IoT use case application.
 
 ## Examine processing guarantee
