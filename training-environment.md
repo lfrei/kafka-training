@@ -223,7 +223,13 @@ Link: https://docs.microsoft.com/en-us/windows/wsl/networking
 
 You see the following error when starting docker desktop on Windows, or when you start Ubuntu:
 
-...
+```
+Logon failure: the user has not been granted the requested logon type at this computer.
+Press any key to continue...
+```
+
+![2022-09-21 06_05_30-Docker Desktop cannot start](https://user-images.githubusercontent.com/10486685/191412535-6790a7e7-4703-410a-8ed1-8ad6b2f35880.jpg)
+
 
 Start a powershell as administrator
 ```
