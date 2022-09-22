@@ -109,3 +109,6 @@ kafka-avro-console-consumer \
 ## Understand how schemas are used in a custom Kafka Client
 
 Have a look at [SensorProducer.java](uc-iot/sensor/src/main/java/com/zuehlke/training/kafka/iot/sensor/SensorProducer.java)
+
+
+📝 Do you have to manually register the schemas in schema registry?
