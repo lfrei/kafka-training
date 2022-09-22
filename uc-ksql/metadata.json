@@ -1,0 +1,8 @@
+kafka-console-producer --broker-list localhost:9092 --topic metadataJson
+{ "sensor_id": "mySensor", "unit": "cm" }
+{ "sensor_id": "myMotor", "unit": "state"}
+
+
+
+
+
