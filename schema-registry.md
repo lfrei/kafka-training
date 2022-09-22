@@ -42,11 +42,8 @@ kafka-avro-console-consumer \
   --topic avro-sensor \
   --bootstrap-server broker:29092 \
   --property schema.registry.url=http://localhost:8081 \
-  --property value.schema="$(< /schemas/avro/sensor-v1.avsc)" \
   --from-beginning
 ```
-
-💡 If you are reading with the same schema, you can also remove the property `value.schema` from the command
 
 ## Produce messages with a newer Avro Schema (mandatory field)
 
@@ -95,20 +92,19 @@ Try to send some messages with the new field:
 
 📝 What is the version number of the schema?
 
-## Consume messages with a older Avro Schema
+## Consume messages with the new Avro Schema
 
-Start a consumer with the schema [sensor-1.avcs](uc-iot/schemas/avro/sensor-v1.avsc):
+Start a consumer with the schema [sensor-3.avcs](uc-iot/schemas/avro/sensor-v3.avsc):
 
 ```
 kafka-avro-console-consumer \
   --topic avro-sensor \
   --bootstrap-server broker:29092 \
   --property schema.registry.url=http://localhost:8081 \
-  --property value.schema="$(< /schemas/avro/sensor-v1.avsc)" \
   --from-beginning
 ```
 
-📝 Are you able to read the data?
+📝 Are you able to read the data? Are you able to see the new field?
 
 ## Understand how schemas are used in a custom Kafka Client
 
