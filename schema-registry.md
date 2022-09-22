@@ -8,6 +8,8 @@ Connect to the schema registry
 docker-compose exec schema-registry bash 
 ```
 
+For this exercise, the schema registry is already bundled with some [schemas](uc-iot/schemas/avro).
+
 ## Produce messages with a Avro Schema
 
 Start a producer with the schema [sensor-1.avcs](uc-iot/schemas/avro/sensor-v1.avsc)
