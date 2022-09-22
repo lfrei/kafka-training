@@ -15,3 +15,5 @@
 
 ## Day 3
 * [Security](kafka-security.md)
+* [KSQL](ksql.md)
+* [REST-Proxy](rest-proxy.md)
