@@ -93,7 +93,7 @@ Links:
 * Kafka Streams Stateless Operations: https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#stateless-transformations
 * Writing Streams back to kafka: https://kafka.apache.org/32/documentation/streams/developer-guide/dsl-api.html#writing-streams-back-to-kafka
 
-Strech Goal:
+Stretch Goal:
 
 * Do the same for motors that are in the `error` state. You can do this in the same stream (checkout the `split` Operation) or in a new stream.
 * Have a look at [Exercise1StreamTest](uc-iot/kafka-stream/src/test/java/com/zuehlke/training/kafka/iot/stream/Exercise1StreamTest.java). Is it green?
