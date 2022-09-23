@@ -2,6 +2,14 @@
 
 [⬅️ Back to Kafka overview](README.md)
 
+Ensure that your lab environment is clean - remove all docker instances from your former lab:
+
+```
+docker stop $(docker ps -q)
+
+docker rm $(docker ps -a -q)
+```
+
 Make sure that the exercise environment is up and running:
 
 ```
