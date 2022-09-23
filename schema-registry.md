@@ -2,6 +2,12 @@
 
 [⬅️ Back to Kafka overview](README.md)
 
+Make sure that the exercise environment is up and running:
+
+```
+docker-compose up -d
+```
+
 Connect to the schema registry
 
 ```
