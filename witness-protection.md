@@ -67,6 +67,7 @@ Exercise:
 Hints:
 
 * The ID column of the table plays an important part for this exercise.
+* For the put request you need another url: http://127.0.0.1:8083/connectors/jdbc_source_mysql_01/config
 
 Links:
 
