@@ -14,10 +14,17 @@ public class Exercise3Stream {
     public KStream<String, String> exercise3(StreamsBuilder builder) {
 
         KStream<String, String> sourceStream = builder.stream("mysql-01-events");
-
-        //TODO
-
+        KStream<String, String> stataStream = sourceStream.filter(this::filterInputForTopic);
+        stataStream.to("tax-department");
         return sourceStream;
     }
 
+    private boolean filterInputForTopic(String key, String value) {
+        if (value.contains("<eCH-0020:moveIn>")) {
+            return true;
+        }else {
+            return false;
+
+        }
+    }
 }
