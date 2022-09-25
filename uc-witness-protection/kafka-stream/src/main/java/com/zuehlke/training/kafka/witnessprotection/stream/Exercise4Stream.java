@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @Slf4j
-public class Exercise2Stream {
+public class Exercise4Stream {
 
 	@Bean
-	public KStream<String, String> exercise2(StreamsBuilder builder) {
+	public KStream<String, String> exercise4(StreamsBuilder builder) {
 		// TODO
 		return sourceStream;
 	}

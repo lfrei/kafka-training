@@ -4,7 +4,5 @@ spring:
     streams:
       application-id: witnessprotection-kafka-stream
       properties:
-        schema.registry.url: http://localhost:8081
-        auto.offset.reset: earliest
         default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
         default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
