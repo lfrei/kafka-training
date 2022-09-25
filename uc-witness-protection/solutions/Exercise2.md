@@ -1,7 +1,8 @@
+We suggest to execute these commands from the Docker broker container.
 
-Delete the topic mysql-01-events and create a new one.
+Alter the topic mysql-01-events to more than one partion.
 ```
-kafka-topics --zookeeper zookeeper:2181 --create --topic mysql-01-events --partitions 2 --replication-factor 1
+kafka-topics --zookeeper zookeeper:2181 --alter --topic mysql-01-events --partitions 2
 ```
 
 Create two consumer for consumer group t1 in two different terminals with the same following command:
