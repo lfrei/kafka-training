@@ -8,12 +8,23 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @Slf4j
-public class Exercise2Stream {
+public class Exercise4Stream {
 
-	@Bean
-	public KStream<String, String> exercise2(StreamsBuilder builder) {
-		// TODO
-		return sourceStream;
-	}
+    @Bean
+    public KStream<String, String> exercise4(StreamsBuilder builder) {
 
+        KStream<String, String> sourceStream = builder.stream("mysql-01-events");
+        KStream<String, String> stataStream = sourceStream.filter(this::filterInputForTopic);
+        stataStream.to("tax-department");
+        return sourceStream;
+    }
+
+    private boolean filterInputForTopic(String key, String value) {
+        if (value.contains("<eCH-0020:moveIn>")) {
+            return true;
+        }else {
+            return false;
+
+        }
+    }
 }
