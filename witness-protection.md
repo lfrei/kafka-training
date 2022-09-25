@@ -41,7 +41,7 @@ Hints:
 
 * If you get stuck, check the status of your connector. 
 * It might be necessary to restart the Kafka Connect. This can be done by the following command: **docker restart kafka-connect-01**
-* How to add content in a database table can be found here https://www.siteground.com/tutorials/phpmyadmin/create-populate-tables/
+* How to add content in a table with phpmyadmin can be found here https://www.siteground.com/tutorials/phpmyadmin/create-populate-tables/
 
 Links:
 
