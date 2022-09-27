@@ -33,7 +33,7 @@ public class Exercise3Stream {
 
         // This average calculation is not exact because it is dependent on the number of
         // messages that have been delivered in the time frame. This can differ and will result
-        // in a wrong average (see line 56). So solve this the number of messages should be
+        // in a wrong average (see line 55). So solve this the number of messages should be
         // included in the aggregate, as seen in the exercise3_schema stream.
 
         stream
@@ -54,7 +54,6 @@ public class Exercise3Stream {
                                         .setSensorId(readOnlyKey.key())
                                         .setValue(value / 6)
                                         .build()
-
                 )
                 .toStream()
                 .selectKey((key, value) -> value.getSensorId())
@@ -88,7 +87,6 @@ public class Exercise3Stream {
                                         .setSensorId(readOnlyKey.key())
                                         .setValue(value.getSum() / value.getCount())
                                         .build()
-
                 )
                 .toStream()
                 .selectKey((key, value) -> value.getSensorId())
