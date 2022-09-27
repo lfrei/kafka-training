@@ -1,0 +1,18 @@
+{
+  "namespace": "com.zuehlke.training.kafka.iot",
+  "type": "record",
+  "name": "Aggregate",
+  "doc": "The aggregate of sensor messages",
+  "fields" : [
+    {
+      "name" : "count",
+      "type" : "long",
+      "doc"  : "Number of messages in the aggregate"
+    },
+    {
+      "name" : "sum",
+      "type" : "long",
+      "doc"  : "Sum of message values in the aggregate"
+    }
+  ]
+}

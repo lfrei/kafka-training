@@ -1,5 +1,6 @@
 package com.zuehlke.training.kafka.iot.stream;
 
+import com.zuehlke.training.kafka.iot.Aggregate;
 import com.zuehlke.training.kafka.iot.SensorMeasurement;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.serialization.Serdes;
@@ -30,6 +31,11 @@ public class Exercise3Stream {
                 false
         );
 
+        // This average calculation is not exact because it is dependent on the number of
+        // messages that have been delivered in the time frame. This can differ and will result
+        // in a wrong average (see line 56). So solve this the number of messages should be
+        // included in the aggregate, as seen in the exercise3_schema stream.
+
         stream
                 .filter(((key, value) -> key.equals("mySensor")))
                 .groupByKey()
@@ -51,7 +57,42 @@ public class Exercise3Stream {
 
                 )
                 .toStream()
+                .selectKey((key, value) -> value.getSensorId())
                 .to("myPlant-avg");
+
+        return stream;
+    }
+
+    @Bean
+    public KStream<String, SensorMeasurement> exercise3_schema(StreamsBuilder builder) {
+
+        KStream<String, SensorMeasurement> stream = builder.stream("myPlant");
+
+        stream
+                .filter(((key, value) -> key.equals("mySensor")))
+                .groupByKey()
+                .windowedBy(TimeWindows.ofSizeWithNoGrace(Duration.ofMinutes(1)))
+                .aggregate(
+                        () -> new Aggregate(0L, 0L),
+                        (key, value, aggregate) -> {
+                            aggregate.setCount(aggregate.getCount() + 1);
+                            aggregate.setSum(aggregate.getSum() + (Long) value.getValue());
+                            return aggregate;
+                        },
+                        Materialized.as("mySensorAggregateSchemaStore")
+                )
+                .mapValues(
+                        (readOnlyKey, value) ->
+                                SensorMeasurement.newBuilder()
+                                        .setDatetime(System.currentTimeMillis())
+                                        .setSensorId(readOnlyKey.key())
+                                        .setValue(value.getSum() / value.getCount())
+                                        .build()
+
+                )
+                .toStream()
+                .selectKey((key, value) -> value.getSensorId())
+                .to("myPlant-avg-schema");
 
         return stream;
     }
