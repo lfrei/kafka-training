@@ -133,15 +133,15 @@ The double agent is done with his job. We need to compact all events.
 
 Goals:
 * Familiarise yourself with compaction. 
-* Updating the topic configufration and executing compation.
+* Updating the topic configuration and executing compaction.
 
 Exercise:
-* Recap yourself with the given attributes. cleanup.policy, max.compaction.lag.ms, segment.ms and segment.bytes. 
+* Recap yourself with the given attributes. cleanup.policy, max.compaction.lag.ms, min.compaction.lag.ms, segment.ms and segment.bytes. 
 * Config the topic for compacting using the above-mentioned configuration. The attributes can be changed via akHQ UI. 
-* Make sure that there are multiple messages with the same key. Ensure the compacting is executed.
+* Make sure that there are multiple messages with the same key and execute compaction.
 
 Hint:
-* After a new segment is created, we need to send a new message to kick-off compacting.
+* After a new segment is created, we need to send a new message to the same partition to kick-off compaction.
 
 * Links:
 * https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html
