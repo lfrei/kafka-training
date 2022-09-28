@@ -141,35 +141,18 @@ Links:
 The double agent is done with his job. We need to compact all events.
 
 Goals:
-
-* Familiarise yourself with compaction.
+* Familiarise yourself with compaction. 
 * Updating the topic configuration and executing compaction.
 
 Exercise:
-
-<<<<<<< HEAD
-* Familiarize yourself with the given attributes:
-  * cleanup.policy
-  * max.compaction.lag.ms
-  * min.compaction.lag.ms
-  * segment.ms
-  * segment.bytes
-* Config the topic for compacting using the above-mentioned configuration. The attributes can be changed via akHQ UI.
+* Recap yourself with the given attributes. cleanup.policy, max.compaction.lag.ms, min.compaction.lag.ms, segment.ms and segment.bytes. 
+* Config the topic for compacting using the above-mentioned configuration. The attributes can be changed via akHQ UI. 
 * Make sure that there are multiple messages with the same key and execute compaction.
-* Send a tombstone event to clean up all traces of the agent.
-
-Hints:
-
-* After a new segment is created, we need to send a new message to the same partition to kick-off compaction.
-* You can use AKHQ to send a tombstone: [Cloud AKHQ](http://myVMsIP:8080/ui/docker-kafka-server/topic/mysql-01-events/produce) or [Local AKHQ](http://localhost:8080/ui/docker-kafka-server/topic/mysql-01-events/produce)
-  * Select **Tombstone** checkbox
-  * Select the correct partition with the events of the agent
 
 Links:
 =======
 Hint:
-* After a new segment is created, we need to send a new message to kick-off compacting.
->>>>>>> 2f58834 (Update witness-protection.md)
+* After a new segment is created, we need to send a new message to the same partition to kick-off compaction.
 
 * https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html
 * http://cloudurable.com/blog/kafka-architecture-log-compaction/index.html
