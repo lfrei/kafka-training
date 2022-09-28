@@ -121,7 +121,7 @@ Exercise:
 * Use the template [Exercise4Stream.java](uc-witness-protection/kafka-stream/src/main/java/com/zuehlke/training/kafka/witnessprotection/stream/Exercise4Stream.java) to implement a stream
 * Run the application and check the log output
 * Generate events which fulfill the criteria to be in the topics **"tax-department"** and some who doesn't.
-* **Important: note** The data that Kafka Connects sends to Kafka is a representation in Avro. For the exercise it has to be changed to a string.
+* **Note** The data that Kafka Connects sends to Kafka is a representation in Avro. For the exercise it has to be changed to a string.
 
 Hints:
 
