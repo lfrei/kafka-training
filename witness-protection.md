@@ -147,6 +147,7 @@ Goals:
 
 Exercise:
 
+<<<<<<< HEAD
 * Familiarize yourself with the given attributes:
   * cleanup.policy
   * max.compaction.lag.ms
@@ -165,6 +166,10 @@ Hints:
   * Select the correct partition with the events of the agent
 
 Links:
+=======
+Hint:
+* After a new segment is created, we need to send a new message to kick-off compacting.
+>>>>>>> 2f58834 (Update witness-protection.md)
 
 * https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html
 * http://cloudurable.com/blog/kafka-architecture-log-compaction/index.html
