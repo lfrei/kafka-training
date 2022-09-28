@@ -147,4 +147,3 @@ Hint:
 * Links:
 * https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html
 * http://cloudurable.com/blog/kafka-architecture-log-compaction/index.html
-
