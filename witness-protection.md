@@ -88,7 +88,6 @@ Exercise:
 * Generate test events to simulate the distribution of events.
 
 Hints:
-
 * You can re-create or alter the existing topic.
 
 Links:
