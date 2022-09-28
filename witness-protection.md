@@ -141,7 +141,7 @@ Exercise:
 * Make sure that there are multiple messages with the same key. Ensure the compacting is executed.
 
 Hint:
-* After a new segment is created, we need to send a message.
+* After a new segment is created, we need to send a new message to kick-off compacting.
 
 * Links:
 * https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html
