@@ -1,6 +1,6 @@
-We suggest to execute these commands from the Docker broker container.
+We suggest executing these commands from the Docker broker container.
 
-Alter the topic mysql-01-events to more than one partion.
+Alter the topic mysql-01-events to more than one partition.
 ```
 kafka-topics --zookeeper zookeeper:2181 --alter --topic mysql-01-events --partitions 2
 ```
