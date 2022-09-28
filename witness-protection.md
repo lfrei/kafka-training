@@ -128,36 +128,22 @@ Hints:
 Links:
 * https://developer.confluent.io/tutorials/filter-a-stream-of-events/confluent.html
 
-### Exercise 5: Compacting + Tombstone Message
-The double agent is done with his job. We need to remove all events related to his Kafka Message Key.
+### Exercise 5: Compacting 
+The double agent is done with his job. We need to compact all events.
 
 Goals:
-* Familiarise with topic configuring and define an appropriate configuration for compacting 
-* Using a tombstone message to remove all messages for a specific key.
+* Familiarise yourself with compaction. 
+* Updating the topic configufration and executing compation.
 
 Exercise:
-* Recap yourself with the given attributes. cleanup.policy, delete.retention.ms, max.compaction.lag.ms , segment.ms 
+* Recap yourself with the given attributes. cleanup.policy, max.compaction.lag.ms, segment.ms and segment.bytes. 
 * Config the topic for compacting using the above-mentioned configuration. The attributes can be changed via akHQ UI. 
-* Using the tool **kafkacat** to send a Tombstone message. The Kafka console producer cannot generate empty messages.
+* Make sure that there are multiple messages with the same key. Ensure the compacting is executed.
 
 Hint:
-* After sending the tombstone message a final normal message with key and value required to write to new segment.
-* Examples for kafkacat are given below.
-
-```
-# Install on Ubutntu 
-sudo apt install kafkacat
-
-# Mac
-brew install kcat
-
-# Sending an empty message for the topic mysql-01-events.
-echo "key:" | kafkacat -b localhost -t mysql-01-events  -Z -K:
-```
+* After a new segment is created, we need to send a message.
 
 * Links:
-* https://kafka.apache.org/documentation.html#compaction
-* https://medium.com/@damienthomlutz/deleting-records-in-kafka-aka-tombstones-651114655a16
 * https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html
 * http://cloudurable.com/blog/kafka-architecture-log-compaction/index.html
 
