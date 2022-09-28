@@ -1,4 +1,5 @@
-Create the topic and see change file in streams folder.
+Update your connector to use the string converter. 
 ```
-kafka-topics --zookeeper zookeeper:2181 --create --topic tax-department --partitions 1 --replication-factor 1
+"value.converter": "org.apache.kafka.connect.storage.StringConverter"
 ```
+See [Exercise4Stream.java](../kafka-stream/src/main/java/com/zuehlke/training/kafka/witnessprotection/broker/stream/Exercise4Stream.java) 
