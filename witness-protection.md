@@ -113,14 +113,15 @@ Links:
 
 Goals:
 * Include Kafka streams to the existing environment.
-* Create a topic for the tax department and forward every event which contains "<eCH-0020:moveIn>" to the new topic.
+* Forward every event which contains "<eCH-0020:moveIn>" to the new topic.
 
 Exercise:
 
-* Create a new topic for the tax department with the name **"tax-department"**
+* Create a new topic for the tax department with the name **"tax-department"** or use auto creation. 
 * Use the template [Exercise4Stream.java](uc-witness-protection/kafka-stream/src/main/java/com/zuehlke/training/kafka/witnessprotection/stream/Exercise4Stream.java) to implement a stream
 * Run the application and check the log output
 * Generate events which fulfill the criteria to be in the topics **"tax-department"** and some who doesn't.
+* **Important: note** The data that Kafka Connects sends to Kafka is a representation in Avro. For the exercise it has to be changed to a string.
 
 Hints:
 
