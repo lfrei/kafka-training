@@ -121,7 +121,7 @@ Preparation:
   * Add metadata to topic
     * Select topic `metadataJson` and click on magnifier icon
     * Select Button 'Produce to Topic'
-    * Enter Key `mySensor` and value `{"sensor_id": "mySensor", "type": "cm" }`, Select 'Produce' Button
+    * Enter Key `mySensor` and value `{"sensor_id": "mySensor", "type": "cm"}`, Select 'Produce' Button
     * Enter Key `myMotor` and value `{"sensor_id": "myMotor", "type": "state"}`, Select 'Produce' Button
 
 * Create a Table:
