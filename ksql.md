@@ -1,11 +1,20 @@
-Start your KSQL-client with the following command:
+# KSQL
+
+[⬅️ Back to Kafka overview](README.md)
+
+Make sure that the exercise environment is up and running:
+
+```
+docker-compose up -d
+```
+
+Start the KSQL CLI:
 
 ```
 docker-compose exec ksqldb-cli ksql http://ksqldb-server:8088
 ```
 
-
-you can check for topics, streams and tables with the following commands:
+Explore Topics, Streams and Tables:
 
 ```
 SHOW TOPICS;
@@ -13,85 +22,120 @@ SHOW TABLES;
 SHOW STREAMS;
 ```
 
-to check the content of your myPlant topic, use the following command
+💡 You can find all possible statements in the [KSQL Reference](https://docs.ksqldb.io/en/latest/developer-guide/ksqldb-reference/)
+
+## Create a Stream to work with the myPlant Topic
+
+Check the content of the myPlant Topic:
 
 ```
 PRINT myPlant;
 ```
 
-now you we create a ksql-strem based on our plant-topic
+Create a Stream for the myPlant Topic:
 
 ```
-CREATE STREAM 
-	myplant_avro(sensor_id varchar, datetime bigint, value varchar) 
-WITH
-	( KAFKA_TOPIC = 'myPlant', value_format='AVRO');
-```
-
-check your stream data:
+CREATE STREAM myplant_stream(sensor_id varchar, datetime bigint, value STRUCT<STRING VARCHAR, LONG BIGINT>) 
+WITH ( KAFKA_TOPIC = 'myPlant', value_format='AVRO');
 
 ```
-SELECT * FROM myplant_avro  emit changes limit 5;
+
+Show all Streams again to see that `myplant_stream` has been created:
+
+```
+SHOW STREAMS;
 ```
 
-currently you see only new data that is generated on your topic. Thats ok for the time
-being, however, if you want to see all your data you can configure your broker
-as follows:
+Show how the Stream `myplant_stream is defined:
+
+```
+DESCRIBE myplant_stream;
+```
+
+Check the content of your Stream:
+
+```
+SELECT * FROM myplant_stream emit changes;
+```
+
+Currently you see only new data that is generated on your Topic. If you want to see all data, you can change the offset reset:
 
 ```
 SET 'auto.offset.reset' = 'earliest';
 ```
 
+💡 See the possible [data types](https://docs.ksqldb.io/en/latest/reference/sql/data-types/) in the KSQL documentation.
 
-see entries of the motor:
+## Create a Stream from another Stream for Sensors and Motors
+
+Now create separate Streams for sensors and motors using the existing `myplant_sensors_stream` Stream:
 
 ```
-SELECT * FROM myplant_avro  where sensor_id='myMotor' emit changes limit 5;
+CREATE STREAM myplant_sensors_stream
+AS select sensor_id, datetime, value->long as value from myplant_stream where sensor_id = 'mySensor';
 ```
 
-now it's time to solve exercise 1 from the iot-labs with KSQL:
+```
+CREATE STREAM myplant_motors_stream
+AS select sensor_id, datetime, value->string as value from myplant_stream where sensor_id = 'myMotor';
+```
+
+Check the Streams again to see that they have been created:
+
+```
+SHOW STREAMS;
+```
+
+Check the content of your new Streams:
+
+```
+SELECT * FROM myplant_sensors_stream emit changes limit 5;
+SELECT * FROM myplant_motors_stream emit changes limit 5;
+```
+
+💡 Have a look at the topics that have been created in [AKHQ](http://localhost:8080/ui/docker-kafka-server/topic)
 
 ### Exercise 1: Write alerts for high measurement values to a new stream
 
-You can try out to create your topic directly. However, we have the problem that 'value' with different datatypes is not compatible (currently) with avro:
-* create a new topic and transform the content to json, using kafka connect (fastpath: create some date with this [command](uc-ksql/sensordata.json)) 
-* create the stream, and write a query that only returns the top 20%
-* (write the messages to the sensor_top_20 stream)
+Exercise:
 
+* Write a new stream called `sensor_top_20` that only outputs the the highest 20% of sensor measurements
 
+Hints:
 
-```
-CREATE STREAM 
-	myplant_json(sensor_id varchar, datetime bigint, value varchar) 
-WITH
-	( KAFKA_TOPIC = 'myPlantJson', value_format='JSON');
-```
+* You already have a stream that contains sensor values only
+* Check the configured max values of the sensor. The default is 1 Mio
 
-```
- select * from myplant_json where sensor_id='mySensor' emit changes;
-```
+Strech Goal:
 
-```
-select * from myplant_json where sensor_id='mySensor' and CAST(value as bigint)>800000 emit changes;
-```
-
-```
-create stream sensor_top_20 as select * from myplant_json where sensor_id='mySensor' and CAST(value as bigint)>800000 emit changes;
-```
+* Write a new stream called `motor_errors` that only outputs motors in state error
 
 ### Exercise 2: Add metadata to messages
 
-Now you have to join
+Preparation:
 
+* Navigate to [AKHQ](http://localhost:8080/ui/docker-kafka-server/topic) to create the `metadataJson` topic
+  * Create a new topic
+    * Select Button 'Create a topic'
+    * Enter Name `metadataJson`
+    * Click 'Create'
+  * Add metadata to topic
+    * Select topic `metadataJson` and click on magnifier icon
+    * Select Button 'Produce to Topic'
+    * Enter Key `mySensor` and value `{"sensor_id": "mySensor", "type": "cm" }`, Select 'Produce' Button
+    * Enter Key `myMotor` and value `{"sensor_id": "myMotor", "type": "state"}`, Select 'Produce' Button
+
+* Create a Table:
 
 ```
-CREATE STREAM 
-	metadata_json (sensor_id varchar, unit varchar ) 
-WITH
-	( KAFKA_TOPIC = 'metadataJson', value_format='JSON');
+CREATE TABLE metadata_table(sensor_id VARCHAR PRIMARY KEY, type VARCHAR) 
+WITH ( KAFKA_TOPIC = 'metadataJson', value_format='JSON');
 ```
+  
+Exercise:
 
+* Write a select statement that
+  * joins the `myPlant_sensors_stream` stream with the `metadata_table` table
+  * outputs all sensor fields with the `type`
 
-```
-select s.datetime, s.value, m.unit from myPlant_Json as s left join metadata_json as m within 7 days  ON s.sensor_id = m.sensor_id emit changes;
-```
+📝 What happens if you add a new metadata value for the sensor in the topic?
