@@ -36,8 +36,7 @@ Create a Stream for the myPlant Topic:
 
 ```
 CREATE STREAM myplant_stream(sensor_id varchar, datetime bigint, value STRUCT<STRING VARCHAR, LONG BIGINT>) 
-WITH ( KAFKA_TOPIC = 'myPlant', value_format='AVRO');
-
+WITH (KAFKA_TOPIC = 'myPlant', value_format='AVRO');
 ```
 
 Show all Streams again to see that `myplant_stream` has been created:
@@ -46,7 +45,7 @@ Show all Streams again to see that `myplant_stream` has been created:
 SHOW STREAMS;
 ```
 
-Show how the Stream `myplant_stream is defined:
+Show how the Stream `myplant_stream` is defined:
 
 ```
 DESCRIBE myplant_stream;
@@ -68,7 +67,7 @@ SET 'auto.offset.reset' = 'earliest';
 
 ## Create a Stream from another Stream for Sensors and Motors
 
-Now create separate Streams for sensors and motors using the existing `myplant_sensors_stream` Stream:
+Now create separate Streams for sensors and motors using the existing `myplant_stream` Stream:
 
 ```
 CREATE STREAM myplant_sensors_stream
@@ -129,7 +128,7 @@ Preparation:
 
 ```
 CREATE TABLE metadata_table(sensor_id VARCHAR PRIMARY KEY, type VARCHAR) 
-WITH ( KAFKA_TOPIC = 'metadataJson', value_format='JSON');
+WITH (KAFKA_TOPIC = 'metadataJson', value_format='JSON');
 ```
   
 Exercise:
