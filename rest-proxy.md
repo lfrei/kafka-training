@@ -26,9 +26,13 @@ Get the value from `cluster_id` and replace it in the following command to creat
 
 ```
 curl -X POST -H "Content-Type: application/json" \
- --data '{"topic_name":"REST_PROXY_TEST", "partitions_count": 6, "configs": []}' \
+ --data '{"topic_name":"REST_PROXY_TEST", "partitions_count": 5, "configs": []}' \
  "http://localhost:8082/v3/clusters/{cluster_id}/topics"
 ```
+
+Check if the Topic as been created:
+
+http://localhost:8082/topics/REST_PROXY_TEST
 
 💡 If you want to produce messages you can follow the [tutorial](https://docs.confluent.io/platform/current/tutorials/examples/clients/docs/rest-proxy.html#produce-records) here.
 
