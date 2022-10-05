@@ -20,14 +20,38 @@ services:
     container_name: broker
     depends_on:
       - zookeeper
+    volumes:
+     - ./security/certs/:/etc/kafka/secrets 
+     - ./security/scripts:/scripts
     ports:
       - "9092:9092"
+      - "9093:9093"
       - "9101:9101"
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      #Activate TLS   
+      #KAFKA_SSL_KEYSTORE_FILENAME: kafka.broker.keystore.jks 
+      #KAFKA_SSL_KEYSTORE_CREDENTIALS: broker_keystore_creds
+      #KAFKA_SSL_KEY_CREDENTIALS: broker_sslkey_creds
+      #KAFKA_SSL_TRUSTSTORE_FILENAME: kafka.broker.truststore.jks
+      #KAFKA_SSL_TRUSTSTORE_CREDENTIALS: broker_truststore_creds
+      #End activate TLS
+      #Client Auth
+      #KAFKA_SSL_CLIENT_AUTH: 'required'  
+      #End client Auth      
+      #ACL Part
+      #KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.auth.SimpleAclAuthorizer
+      #KAFKA_SSL_PRINCIPAL_MAPPING_RULES: 'RULE:^.*[Cc][Nn]=([a-zA-Z0-9.]*).*$$/$$1/L,DEFAULT'   
+      #KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
+      #End ACL Part
+      #Deactivate if TLS is enabled.
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP:  PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      #Deactivate if TLS is enabled.
+      #Activate for TLS
+      #KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092,SSL://broker:9093
+      #KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,SSL:SSL
       KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
@@ -62,7 +86,7 @@ services:
 
   connect:
     restart: always
-    image: confluentinc/cp-kafka-connect:5.4.9
+    image: confluentinc/cp-kafka-connect:7.2.2
     container_name: kafka-connect-01
     depends_on:
       - broker
@@ -89,7 +113,7 @@ services:
       CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: "1"
       CONNECT_PLUGIN_PATH: '/usr/share/java'
     volumes:
-      - db-leach:/db-leach/
+      - ./secrets/:/secrets 
     command: 
       - /bin/bash
       - -c 
@@ -97,17 +121,12 @@ services:
         # JDBC Drivers
         # ------------
         # MySQL
-        cd /usr/share/java/kafka-connect-jdbc/
+        cd /usr/share/java/cp-base-new/
         # See https://dbschema.com/jdbc-driver/MySql.html
-        curl https://dbschema.com/jdbc-drivers/MySqlJdbcDriver.zip | jar xv
-        cd /usr/share/java/kafka-connect-storage-common
+        curl https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/kafka-connect-jdbc/versions/10.5.2/confluentinc-kafka-connect-jdbc-10.5.2.zip | jar xv
+        cd /usr/share/java/cp-base-new/
         wget https://repo1.maven.org/maven2/org/apache/kafka/connect-file/3.1.0/connect-file-3.1.0.jar
-        # MS SQL
-        cd /usr/share/java/kafka-connect-jdbc/
-        # See https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc/7.0.0.jre8
-        curl https://repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/7.0.0.jre8/mssql-jdbc-7.0.0.jre8.jar --output mssql-jdbc-7.0.0.jre8.jar
-        # # Oracle
-        cp /db-leach/jdbc/lib/ojdbc8.jar /usr/share/java/kafka-connect-jdbc
+
         # Now launch Kafka Connect
         sleep infinity &
         /etc/confluent/docker/run
@@ -271,3 +290,4 @@ volumes:
   db-leach: {}
   db_data: {}
   db_conf: {}
+  broker_conf: {}
