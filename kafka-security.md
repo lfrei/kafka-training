@@ -12,6 +12,10 @@ Goals
 ```
 docker-compose up -d
 ```
+💡 If necessary make the script executable.
+```
+chmod u+rx create-certs.sh
+```
 
 Exercise
 * Investigate and create the certificates with the script [create-certs.sh](/security/scripts/create-certs.sh)
@@ -22,7 +26,9 @@ Exercise
 # Create all certificates. 
 cd security/certs
 cp ../scripts/create-certs.sh  .
- ./create-certs.sh
+
+# Run the script and type 5 times yes.
+./create-certs.sh
 
 # Remove the comments in Dock compose.
 KAFKA_SSL_KEYSTORE_FILENAME: kafka.broker.keystore.jks 
@@ -39,7 +45,7 @@ KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:
 KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,SSL:SSL
 
 # Check if all endpoints were published
-docker logs broker | grep -i endpoint
+docker logs broker | grep -i ListenerName
 
 # Excpected result:
 [2022-10-05 17:54:39,794] INFO [SocketServer listenerType=ZK_BROKER, nodeId=1] Started data-plane acceptor and processor(s) for endpoint : ListenerName(PLAINTEXT) (kafka.network.SocketServer)
@@ -48,22 +54,23 @@ docker logs broker | grep -i endpoint
 ```
 
 
-Access the broker and produce a message. Investigate the blow given bash scripts als well as the properties file.
+Access the broker and produce a message. Investigate the below given bash scripts als well as the properties files for producer/consumer.
 ``` 
 docker exec -it broker bash
-cd /scripts$
+cd /scripts
 # start console producer
 ./start-producer.sh
 # start console consumer
 ./start-consumer.sh
 ```
 
-Activate the client auth and active the keystore in the properties files in the folder at /scripts on the broker.  
+Activate TLS client authentication and alter the keystore in the properties files for producer/consumer. Send and consume a message afterwards.
 ```      
 KAFKA_SSL_CLIENT_AUTH: 'required'
 ```
 
-Create an ACL for the topic kafka-security-topic and try to produce/consume messages.
+* Create an ACL for the topic kafka-security-topic and try to produce/consume messages. 
+* Grant read permission for the consumer.
 ```
 
 kafka-acls --authorizer-properties zookeeper.connect=zookeeper:2181 --add --allow-principal User:producer --operation all -topic kafka-security-topic
@@ -73,6 +80,12 @@ kafka-acls --authorizer-properties zookeeper.connect=zookeeper:2181 --list -topi
 
 # Check the certficate within key or truststore.
 keytool -list -v -keystore kafka.producer.keystore.jks
+```
+
+Reset your environment. 
+```
+git checkout docker-compose.yml
+docker-compose up -d
 ```
 
 Links:
