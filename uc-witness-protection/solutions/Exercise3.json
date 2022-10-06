@@ -12,3 +12,21 @@
   "transforms.extractInt.type":"org.apache.kafka.connect.transforms.ExtractField$Key",
   "transforms.extractInt.field":"PERSON_IDENTIFIER"
 }
+
+
+
+https://docs.confluent.io/cloud/current/connectors/transforms/extractfield.html#properties
+{
+  "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+  "connection.url": "jdbc:mysql://mariadb:3306/events",
+  "connection.user": "kafka-training",
+  "connection.password": "kafka-training",
+  "topic.prefix": "mysql-01-",
+  "incrementing.column.name": "ID",
+  "mode":"incrementing",
+  "transforms":"createKey,extractString",
+  "transforms.extractString.field": "PERSON_IDENTIFIER",
+   "transforms.extractString.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
+    "transforms.createKey.type": "org.apache.kafka.connect.transforms.ValueToKey",
+    "transforms.createKey.fields": "PERSON_IDENTIFIER"
+}
