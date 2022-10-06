@@ -15,7 +15,6 @@
 
 
 
-https://docs.confluent.io/cloud/current/connectors/transforms/extractfield.html#properties
 {
   "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
   "connection.url": "jdbc:mysql://mariadb:3306/events",
