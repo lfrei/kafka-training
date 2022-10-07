@@ -87,7 +87,7 @@ services:
 
   connect:
     restart: always
-    image: confluentinc/cp-kafka-connect:7.2.2
+    image: confluentinc/cp-kafka-connect:5.4.9
     container_name: kafka-connect-01
     depends_on:
       - broker
@@ -114,20 +114,25 @@ services:
       CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: "1"
       CONNECT_PLUGIN_PATH: '/usr/share/java'
     volumes:
-      - ./secrets/:/secrets 
-    command: 
+      - db-leach:/db-leach/
+    command:
       - /bin/bash
-      - -c 
+      - -c
       - |
         # JDBC Drivers
         # ------------
         # MySQL
-        cd /usr/share/java/cp-base-new/
+        cd /usr/share/java/kafka-connect-jdbc/
         # See https://dbschema.com/jdbc-driver/MySql.html
-        curl https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/kafka-connect-jdbc/versions/10.5.2/confluentinc-kafka-connect-jdbc-10.5.2.zip | jar xv
-        cd /usr/share/java/cp-base-new/
+        curl https://dbschema.com/jdbc-drivers/MySqlJdbcDriver.zip | jar xv
+        cd /usr/share/java/kafka-connect-storage-common
         wget https://repo1.maven.org/maven2/org/apache/kafka/connect-file/3.1.0/connect-file-3.1.0.jar
-
+        # MS SQL
+        cd /usr/share/java/kafka-connect-jdbc/
+        # See https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc/7.0.0.jre8
+        curl https://repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/7.0.0.jre8/mssql-jdbc-7.0.0.jre8.jar --output mssql-jdbc-7.0.0.jre8.jar
+        # # Oracle
+        cp /db-leach/jdbc/lib/ojdbc8.jar /usr/share/java/kafka-connect-jdbc
         # Now launch Kafka Connect
         sleep infinity &
         /etc/confluent/docker/run
