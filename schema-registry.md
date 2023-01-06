@@ -87,7 +87,7 @@ Try to send a message that include the new mandatory field:
 
 Start a producer with the schema [sensor-3.avcs](uc-iot/schemas/avro/sensor-v3.avsc)
 
-* This schema adds a default value for `type` and makes it optional by adding a "default"
+* This schema adds a default value for `type` and this makes it optional
 
 ```
 kafka-avro-console-producer \
