@@ -36,7 +36,7 @@ public class SensorProducer {
     }
 
     private SensorMeasurement getMeasurement() {
-        return new SensorMeasurement(sensorConfig.getSensorId(), System.currentTimeMillis(), getMeasurementValue());
+        return new SensorMeasurement(sensorConfig.getSensorId(), System.currentTimeMillis(), getMeasurementValue(), null);
     }
 
     private Long getMeasurementValue() {
