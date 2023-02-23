@@ -86,6 +86,9 @@ Exercise:
 Hints:
 
 * Have a look at the [Avro Schema](uc-iot/kafka-stream/src/main/resources/avro/values.avsc)
+* The `value` field of the schema can have multiple types. In Java you have to cast the field before you can compare it:
+  * `string` -> (String) measurement.getValue()
+  * `long` -> (Long) measurement.getValue()
 * Check the configured max values of the sensor. The default is 1 Mio
 
 Links:
