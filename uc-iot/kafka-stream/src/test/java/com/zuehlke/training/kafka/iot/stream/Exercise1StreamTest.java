@@ -57,10 +57,10 @@ class Exercise1StreamTest {
 
     @Test
     void exercise1_messagesProcessed_top20PercentForwarded() {
-        inputTopic.pipeInput(createRecord("mySensor", 10_000L));
-        inputTopic.pipeInput(createRecord("mySensor", 100_000L));
-        inputTopic.pipeInput(createRecord("mySensor", 999_999L));
-        inputTopic.pipeInput(createRecord("mySensor", 888_888L));
+        inputTopic.pipeInput(createSensorMeasurement("mySensor", 10_000L));
+        inputTopic.pipeInput(createSensorMeasurement("mySensor", 100_000L));
+        inputTopic.pipeInput(createSensorMeasurement("mySensor", 999_999L));
+        inputTopic.pipeInput(createSensorMeasurement("mySensor", 888_888L));
 
         List<TestRecord<String, SensorMeasurement>> outputMessages = outputTopic.readRecordsToList();
 
@@ -74,15 +74,25 @@ class Exercise1StreamTest {
 
     @Test
     void exercise1_messagesProcessed_motorsIgnored() {
-        inputTopic.pipeInput(createRecord("mySensor", 10_000L));
-        inputTopic.pipeInput(createRecord("myMotor", "running"));
+        inputTopic.pipeInput(createSensorMeasurement("mySensor", 10_000L));
+        inputTopic.pipeInput(createMotorState("myMotor", "running"));
 
         List<TestRecord<String, SensorMeasurement>> outputMessages = outputTopic.readRecordsToList();
 
         assertThat(outputMessages).isEmpty();
     }
 
-    private TestRecord<String, SensorMeasurement> createRecord(String key, Object value) {
+    private TestRecord<String, SensorMeasurement> createMotorState(String key, String value) {
+        SensorMeasurement sensorMeasurement = SensorMeasurement.newBuilder()
+                .setSensorId(key)
+                .setDatetime(System.currentTimeMillis())
+                .setState(value)
+                .build();
+
+        return new TestRecord<>(key, sensorMeasurement);
+    }
+
+    private TestRecord<String, SensorMeasurement> createSensorMeasurement(String key, Long value) {
         SensorMeasurement sensorMeasurement = SensorMeasurement.newBuilder()
                 .setSensorId(key)
                 .setDatetime(System.currentTimeMillis())
