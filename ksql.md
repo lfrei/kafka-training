@@ -39,6 +39,8 @@ CREATE STREAM myplant_stream(sensor_id varchar, datetime bigint, value STRUCT<ST
 WITH (KAFKA_TOPIC = 'myPlant', value_format='AVRO');
 ```
 
+💡 The `value` field is a `STRUCT` because it can have multiple data types
+
 Show all Streams again to see that `myplant_stream` has been created:
 
 ```
@@ -78,6 +80,8 @@ AS select sensor_id, datetime, value->long as value from myplant_stream where se
 CREATE STREAM myplant_motors_stream
 AS select sensor_id, datetime, value->string as value from myplant_stream where sensor_id = 'myMotor';
 ```
+
+💡 To access a field in a `STRUCT`, use the `->` operator
 
 Check the Streams again to see that they have been created:
 
