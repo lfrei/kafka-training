@@ -16,8 +16,15 @@
     },
     {
       "name" : "value",
-      "type" : [ "long", "string" ],
+      "type" : ["null", "long"],
+      "default": null,
       "doc"  : "The value of the sensor measurement"
+    },
+    {
+      "name" : "state",
+      "type" : ["null", "string"],
+      "default": null,
+      "doc"  : "The state of the motor measurement"
     }
   ]
 }
