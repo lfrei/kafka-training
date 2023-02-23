@@ -37,7 +37,7 @@ public class MotorProducer {
     }
 
     private SensorMeasurement getMeasurement() {
-        return new SensorMeasurement(motorConfig.getMotorId(), System.currentTimeMillis(), getMotorState());
+        return new SensorMeasurement(motorConfig.getMotorId(), System.currentTimeMillis(), null, getMotorState());
     }
 
     private String getMotorState() {
