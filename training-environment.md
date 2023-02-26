@@ -26,18 +26,18 @@ docker ps
 
 Example output
 CONTAINER ID   IMAGE                                        COMMAND                  CREATED          STATUS                      PORTS                                            NAMES
-f7e7af1224bb   confluentinc/cp-ksqldb-cli:6.2.1             "/bin/sh"                24 minutes ago   Up 24 minutes                                                                ksqldb-cli
-65434931c315   confluentinc/ksqldb-examples:6.2.1           "bash -c 'echo Waiti…"   24 minutes ago   Up 24 minutes                                                                ksql-datagen
+f7e7af1224bb   confluentinc/cp-ksqldb-cli:7.3.2             "/bin/sh"                24 minutes ago   Up 24 minutes                                                                ksqldb-cli
+65434931c315   confluentinc/ksqldb-examples:7.3.2           "bash -c 'echo Waiti…"   24 minutes ago   Up 24 minutes                                                                ksql-datagen
 5146bc086a96   tchiotludo/akhq                              "docker-entrypoint.s…"   24 minutes ago   Up 24 minutes (healthy)   0.0.0.0:8080->8080/tcp                           kafka-training-akhq-1
-bc424bb15f90   confluentinc/cp-ksqldb-server:6.2.1          "/etc/confluent/dock…"   24 minutes ago   Up 24 minutes               0.0.0.0:8088->8088/tcp                           ksqldb-server
+bc424bb15f90   confluentinc/cp-ksqldb-server:7.3.2          "/etc/confluent/dock…"   24 minutes ago   Up 24 minutes               0.0.0.0:8088->8088/tcp                           ksqldb-server
 cfde6b5e48ca   ghcr.io/lfrei/kafka-training/sensor:latest   "/cnb/process/web"       24 minutes ago   Up 24 minutes                                                                kafka-training-sensor-1
 2f879c08c7bd   confluentinc/cp-kafka-connect:5.4.9          "/bin/bash -c '# JDB…"   24 minutes ago   Up 24 minutes (healthy)     0.0.0.0:8083->8083/tcp, 9092/tcp                 kafka-connect-01
 fc6737553e05   ghcr.io/lfrei/kafka-training/motor:latest    "/cnb/process/web"       24 minutes ago   Up 24 minutes                                                                kafka-training-motor-1
-a07a5245759e   confluentinc/cp-kafka-rest:6.2.1             "/etc/confluent/dock…"   24 minutes ago   Up 24 minutes               0.0.0.0:8082->8082/tcp                           rest-proxy
-947b14d484be   confluentinc/cp-schema-registry:6.2.1        "/etc/confluent/dock…"   24 minutes ago   Up 24 minutes               0.0.0.0:8081->8081/tcp                           schema-registry
-57f6f51d3b36   confluentinc/cp-server:6.2.1                 "/etc/confluent/dock…"   24 minutes ago   Up 24 minutes               0.0.0.0:9092->9092/tcp, 0.0.0.0:9101->9101/tcp   broker
+a07a5245759e   confluentinc/cp-kafka-rest:7.3.2             "/etc/confluent/dock…"   24 minutes ago   Up 24 minutes               0.0.0.0:8082->8082/tcp                           rest-proxy
+947b14d484be   confluentinc/cp-schema-registry:7.3.2        "/etc/confluent/dock…"   24 minutes ago   Up 24 minutes               0.0.0.0:8081->8081/tcp                           schema-registry
+57f6f51d3b36   confluentinc/cp-server:7.3.2                 "/etc/confluent/dock…"   24 minutes ago   Up 24 minutes               0.0.0.0:9092->9092/tcp, 0.0.0.0:9101->9101/tcp   broker
 98d920dd7f65   phpmyadmin/phpmyadmin                        "/docker-entrypoint.…"   24 minutes ago   Up 24 minutes               0.0.0.0:8085->80/tcp                             pma
-5036bd4a406d   confluentinc/cp-zookeeper:6.2.1              "/etc/confluent/dock…"   24 minutes ago   Up 24 minutes               2888/tcp, 0.0.0.0:2181->2181/tcp, 3888/tcp       zookeeper
+5036bd4a406d   confluentinc/cp-zookeeper:7.3.2              "/etc/confluent/dock…"   24 minutes ago   Up 24 minutes               2888/tcp, 0.0.0.0:2181->2181/tcp, 3888/tcp       zookeeper
 67218c72a3af   mariadb:10.7                                 "docker-entrypoint.s…"   24 minutes ago   Up 24 minutes               0.0.0.0:3306->3306/tcp                           kafka-training-mariadb-1
 ```
 In addition, you can visit http://localhost:8080/ and check if akHQ is running appropriately if you see the node here http://localhost:8080/ui/docker-kafka-server/node.
