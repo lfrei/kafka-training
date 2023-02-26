@@ -2,23 +2,29 @@
 
 [⬅️ Back to Kafka overview](README.md)
 
-## First source connector
+Make sure that the exercise environment is up and running:
 
-💡 **Important:** Every command needs to be executed from the Kafka Broker or Kafka Connect **Docker Container**. We recommend two consoles. 
+```
+docker-compose up -d
+```
 
-* Broker: docker exec -it  broker bash
-* Kafka Connect: docker exec -it  kafka-connect-01 bash
+💡 **Important:** Every command needs to be executed from the Kafka Broker or Kafka Connect **Docker Container**. Open two consoles:
 
+* ***Kafka Broker***: `docker exec -it broker bash`
+* ***Kafka Connect***: `docker exec -it kafka-connect-01 bash`
 
-Let's get started and create a file topic. 
+## File source connector
+
+Let's get started and create a file topic:
+
 ```
 # From broker container
-kafka-topics --zookeeper zookeeper:2181 --create --topic file-topic --partitions 3 --replication-factor 1
-# to describe a topic
-kafka-topics --zookeeper zookeeper:2181 --topic file-topic --describe
+kafka-topics --bootstrap-server localhost:9092 --create --topic file-topic --partitions 3 --replication-factor 1
+# Inspect the new topis
+kafka-topics --bootstrap-server localhost:9092 --topic file-topic --describe
 ```
 
-Access to connect container and create an empty file.
+Access to Kafka Connect container and create an empty file:
 
 ```
 # From connect container
@@ -26,29 +32,33 @@ Access to connect container and create an empty file.
 touch /tmp/input && chmod 777 /tmp/input
 ```
 
-Let's register the connector.
+Let's register the file source connector:
+
 ```
 # From broker container
 curl -X POST http://kafka-connect-01:8083/connectors \
 -H 'Accept: */*' \
 -H 'Content-Type: application/json' \
 -d '{
-"name": "file_source_connector",
-"config": {
-"connector.class": "org.apache.kafka.connect.file.FileStreamSourceConnector",
-"topic": "file-topic",
-"file": "/tmp/input",
-"value.converter": "org.apache.kafka.connect.storage.StringConverter"
-}
+        "name": "file_source_connector",
+        "config": {
+        "connector.class": "org.apache.kafka.connect.file.FileStreamSourceConnector",
+        "topic": "file-topic",
+        "file": "/tmp/input",
+        "value.converter": "org.apache.kafka.connect.storage.StringConverter"
+    }
 }'
 ```
-* 💡 The connector names 'file_source_connector' is unique
-* 💡 FileStreamSourceConnector is an implementation of a connector from the kafka connector API.
-* 💡 **org.apache.kafka.connect.file.FileStreamSourceConnector** is not by default in container and was copied.
-* 💡 Converter are for the data format. See https://www.confluent.io/blog/kafka-connect-deep-dive-converters-serialization-explained/#configuring-converters
 
-Let's investigate the connectors.
+* The connector names 'file_source_connector' is unique
+* FileStreamSourceConnector is an implementation of a connector from the kafka connector API.
+* `org.apache.kafka.connect.file.FileStreamSourceConnector` is not by default in the container and was copied see (docker-compose.yaml)
+* Converter are for the data format. See [Converter configuration](https://www.confluent.io/blog/kafka-connect-deep-dive-converters-serialization-explained/#configuring-converters)
+
+Let's investigate the connectors:
+
 ```
+# From broker container
 # Show all connectors
 curl http://kafka-connect-01:8083/connectors
 # Check our specific connector
@@ -56,18 +66,28 @@ curl http://kafka-connect-01:8083/connectors/file_source_connector
 # Check the status of our connector
 curl  'http://kafka-connect-01:8083/connectors/file_source_connector/status'
 ```
-* 💡 By replacing kafka-connect-01 with localhost you can use your browser to perform the get requests.
 
-Let's generate data and investigate our topic
+💡 By replacing kafka-connect-01 with localhost you can use your browser to perform the get requests: http://localhost:8083/connectors
+
+Now let's generate data that the connector should ingest into kafka:
+
 ```
 # From connect container
 echo "My new data." >> /tmp/input
+```
 
-# # From broker container
+Start a consumer to check the file topic:
+
+```
+# From broker container
 kafka-console-consumer --bootstrap-server broker:9092 --topic file-topic --from-beginning
 ```
 
-Create sink connector and consumer the data
+💡 Generate some more messages to see that the connector is ingesting the data
+
+## File Sink Connector
+
+Create a file sink connector that writes to a output file:
 
 ```
 # From broker container
@@ -75,34 +95,40 @@ curl -X POST http://kafka-connect-01:8083/connectors \
 -H 'Accept: */*' \
 -H 'Content-Type: application/json' \
 -d '{
-"name": "file_sink_connector",
-"config": {
-"connector.class": "org.apache.kafka.connect.file.FileStreamSinkConnector",
-"topics": "file-topic",
-"file": "/tmp/output",
-"value.converter": "org.apache.kafka.connect.storage.StringConverter"
-}
+        "name": "file_sink_connector",
+        "config": {
+        "connector.class": "org.apache.kafka.connect.file.FileStreamSinkConnector",
+        "topics": "file-topic",
+        "file": "/tmp/output",
+        "value.converter": "org.apache.kafka.connect.storage.StringConverter"
+    }
 }' 
-
 ```
 
-Check the output and produce content
+💡 Investigate the connector with the commands we learned above
+
+Check the output file that has been written by the connector:
+
 ```
-# from connect  container
+# from connect container
 tail -fn 10 /tmp/output
+```
+
+You can write more messages to the `/tmp/input` file or produce them to the topic:
+
+```
 # From broker container
 kafka-console-producer --bootstrap-server localhost:9092 --topic file-topic
 ```
 
+## Clean up
 
+Delete both connectors to clean up:
 
-Delete both connectors to clean up.
 ```
 # From connect container
 curl -X DELETE http://kafka-connect-01:8083/connectors/file_source_connector
 curl -X DELETE http://kafka-connect-01:8083/connectors/file_sink_connector
-
 # The result should be empty now.
 curl http://kafka-connect-01:8083/connectors
 ```
-
