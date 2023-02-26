@@ -78,7 +78,7 @@ docker logs broker | grep -i ListenerName
 
 💡 You should now see a new **SSL** Listener. The other Listeners (for plaintext) are still available.
 
-Produce a message and consume it again. Investigate the below given bash scripts als well as the properties files for producer/consumer.
+Produce a message and consume it again. Investigate the below given bash scripts as well as the properties files for producer/consumer.
 
 ```
 docker exec -it broker bash
@@ -156,7 +156,7 @@ cd /scripts
 
 💡 Producing messages with our producer is still allowed because of this property: `KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND=true`
 
-💡 The name our user is **producer** as defined in the certificate.
+💡 The name of our user is **producer** as defined in the certificate.
 
 Now let's apply ACLs for **another** producer:
 
