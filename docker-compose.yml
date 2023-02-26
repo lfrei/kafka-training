@@ -87,7 +87,7 @@ services:
 
   connect:
     restart: always
-    image: confluentinc/cp-kafka-connect:5.4.9
+    image: confluentinc/cp-kafka-connect:7.3.2
     container_name: kafka-connect-01
     depends_on:
       - broker
