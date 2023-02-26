@@ -41,14 +41,14 @@ services:
       #KAFKA_SSL_CLIENT_AUTH: 'required'  
       #End client Auth      
       #ACL Part
-      #KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.auth.SimpleAclAuthorizer
+      #KAFKA_AUTHORIZER_CLASS_NAME: kafka.security.authorizer.AclAuthorizer
       #KAFKA_SSL_PRINCIPAL_MAPPING_RULES: 'RULE:^.*[Cc][Nn]=([a-zA-Z0-9.]*).*$$/$$1/L,DEFAULT'   
       #KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
       #End ACL Part
       #Deactivate if TLS is enabled.
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP:  PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      #Deactivate if TLS is enabled.
+      #End deactivate if TLS is enabled.
       #Activate for TLS
       #KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092,SSL://broker:9093
       #KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,SSL:SSL
