@@ -18,7 +18,7 @@ docker-compose up -d
 
 ## Enable TLS encryption
 
-First, generate the cerficiates that are used in the exercie:
+First, generate the certificates that are used in the exercise:
 
 ```
 # Copy script to generate certificates
@@ -156,9 +156,9 @@ cd /scripts
 
 💡 Producing messages with our producer is still allowed because of this property: `KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND=true`
 
-💡 The name our user is *producer* as defined in the certifiacte.
+💡 The name our user is **producer** as defined in the certificate.
 
-Now lets apply ACLS for **another** producer:
+Now let's apply ACLs for **another** producer:
 
 ```
 # apply acl
@@ -175,7 +175,7 @@ Try to produce a message with our producer. You will get the following error:
 org.apache.kafka.common.errors.TopicAuthorizationException: Not authorized to access topics: [kafka-security-topic]
 ```
 
-Now lets apply ACLS for **our** producer as well:
+Now let's apply ACLs for **our** producer as well:
 
 ```
 # apply acl
