@@ -76,7 +76,7 @@ docker logs broker | grep -i ListenerName
 [2022-10-05 17:54:39,797] INFO [SocketServer listenerType=ZK_BROKER, nodeId=1] Started data-plane acceptor and processor(s) for endpoint : ListenerName(SSL) (kafka.network.SocketServer)
 ```
 
-💡 You should now see a new **SSL** Listener
+💡 You should now see a new **SSL** Listener. The other Listeners (for plaintext) are still available.
 
 Produce a message and consume it again. Investigate the below given bash scripts als well as the properties files for producer/consumer.
 
@@ -89,7 +89,7 @@ cd /scripts
 ./start-consumer.sh
 ```
 
-💡 The scripts are mounted as volumes into the broker
+💡 The scripts are mounted as volume into the broker
 
 ✅ **TLS encryption** is now enabled.
 
@@ -129,8 +129,6 @@ docker-compose up -d
 
 ## Enable ACLs (Access Control List)
 
-In this exercise, we want to add ACLs to a topic, to allow a specific producer to write to it.
-
 Activate ACLs, by removing the comment in the `broker` config within the [docker compose](docker-compose.yml) file:
 
 ```
@@ -156,7 +154,9 @@ cd /scripts
 ./start-producer.sh
 ```
 
-💡 Producing messages is still allowed because of this property: `KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND=true`
+💡 Producing messages with our producer is still allowed because of this property: `KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND=true`
+
+💡 The name our user is *producer* as defined in the certifiacte.
 
 Now lets apply ACLS for **another** producer:
 
@@ -168,8 +168,6 @@ kafka-acls --bootstrap-server localhost:9092 --list -topic kafka-security-topic
 ```
 
 💡 This topic is now protected using ACLs.
-
-💡 The name our user is *producer* as defined in the certifiacte.
 
 Try to produce a message with our producer. You will get the following error:
 
@@ -186,7 +184,7 @@ kafka-acls --bootstrap-server localhost:9092 --add --allow-principal User:produc
 kafka-acls --bootstrap-server localhost:9092 --list -topic kafka-security-topic
 ```
 
-💡 Now you can see both *producer* and **other-producer** listed in the ACLs.
+💡 Now you can see both **producer** and **other-producer** listed in the ACLs.
 
 ✅ We can now write messages to the protected topic from our producer.
 
