@@ -3,7 +3,7 @@ version: '2'
 services:
   zookeeper:
     restart: always
-    image: confluentinc/cp-zookeeper:6.2.1
+    image: confluentinc/cp-zookeeper:7.3.2
     hostname: zookeeper
     container_name: zookeeper
     ports:
@@ -15,7 +15,7 @@ services:
 
   broker:
     restart: always
-    image: confluentinc/cp-server:6.2.1
+    image: confluentinc/cp-server:7.3.2
     hostname: broker
     container_name: broker
     depends_on:
@@ -70,7 +70,7 @@ services:
 
   schema-registry:
     restart: always
-    image: confluentinc/cp-schema-registry:6.2.1
+    image: confluentinc/cp-schema-registry:7.3.2
     hostname: schema-registry
     container_name: schema-registry
     depends_on:
@@ -138,7 +138,7 @@ services:
         /etc/confluent/docker/run
 
   ksqldb-server:
-    image: confluentinc/cp-ksqldb-server:6.2.1
+    image: confluentinc/cp-ksqldb-server:7.3.2
     hostname: ksqldb-server
     container_name: ksqldb-server
     depends_on:
@@ -161,7 +161,7 @@ services:
       KSQL_KSQL_LOGGING_PROCESSING_STREAM_AUTO_CREATE: 'true'
 
   ksqldb-cli:
-    image: confluentinc/cp-ksqldb-cli:6.2.1
+    image: confluentinc/cp-ksqldb-cli:7.3.2
     container_name: ksqldb-cli
     depends_on:
       - broker
@@ -171,7 +171,7 @@ services:
     tty: true
 
   ksql-datagen:
-    image: confluentinc/ksqldb-examples:6.2.1
+    image: confluentinc/ksqldb-examples:7.3.2
     hostname: ksql-datagen
     container_name: ksql-datagen
     depends_on:
@@ -194,7 +194,7 @@ services:
 
   rest-proxy:
     restart: always
-    image: confluentinc/cp-kafka-rest:6.2.1
+    image: confluentinc/cp-kafka-rest:7.3.2
     depends_on:
       - broker
       - schema-registry
