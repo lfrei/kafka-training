@@ -27,7 +27,6 @@ docker ps
 Example output
 CONTAINER ID   IMAGE                                        COMMAND                  CREATED          STATUS                      PORTS                                            NAMES
 f7e7af1224bb   confluentinc/cp-ksqldb-cli:7.3.2             "/bin/sh"                24 minutes ago   Up 24 minutes                                                                ksqldb-cli
-65434931c315   confluentinc/ksqldb-examples:7.3.2           "bash -c 'echo Waiti…"   24 minutes ago   Up 24 minutes                                                                ksql-datagen
 5146bc086a96   tchiotludo/akhq                              "docker-entrypoint.s…"   24 minutes ago   Up 24 minutes (healthy)     0.0.0.0:8080->8080/tcp                           kafka-training-akhq-1
 bc424bb15f90   confluentinc/cp-ksqldb-server:7.3.2          "/etc/confluent/dock…"   24 minutes ago   Up 24 minutes               0.0.0.0:8088->8088/tcp                           ksqldb-server
 cfde6b5e48ca   ghcr.io/lfrei/kafka-training/sensor:latest   "/cnb/process/web"       24 minutes ago   Up 24 minutes                                                                kafka-training-sensor-1
