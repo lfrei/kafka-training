@@ -18,7 +18,7 @@ The following service components should be installed on your training device bef
 
 ## Access to your environment
 
-From your instructor to will get access to a ubuntu-vm in the cloud, where all training resources are up and running:
+From your instructor you will get access to a ubuntu-vm in the cloud, where all training resources are up and running:
 
 * login [url](https://mottbott.signin.aws.amazon.com/console)
 
@@ -45,7 +45,7 @@ To enable tool access for the exercises, whitelist [the IP of your workstation](
 * AKHQ:            Custom TCP 8080 [your IP]
 * Schema Registry: Custom TCP 8081 [your IP]
 * Rest Proxy:      Custom TCP 8082 [your IP]
-* Kafka Connnect:  Custom TCP 8083 [your IP]
+* Kafka Connect:   Custom TCP 8083 [your IP]
 * KSQL:            Custom TCP 8088 [your IP]
 * Kafka Broker:    Custom TCP 9092 [your IP]
 * phpMyadmin:      Custom TCP 3306 [your IP]
