@@ -13,7 +13,9 @@ INSERT INTO `events` (`ID`, `XML_EVENT`, `CREATETIME`, `PERSON_IDENTIFIER`) VALU
 INSERT INTO `events` (`ID`, `XML_EVENT`, `CREATETIME`, `PERSON_IDENTIFIER`) VALUES (NULL, 'payload', current_timestamp(), 'agent');
 INSERT INTO `events` (`ID`, `XML_EVENT`, `CREATETIME`, `PERSON_IDENTIFIER`) VALUES (NULL, 'payload', current_timestamp(), 'agent');
 ```
-Now wait until the defined 3 minutes are over and crate a new message for the key **agent**. Kafkacat is a very convenient way to do that. 
+Now wait until the defined 3 minutes are over and crate a new message for the key **agent**.
+
+You can use AKHQ for that or use **Kafkacat**: 
 
 ```
 # Install on Ubutntu 
@@ -23,7 +25,7 @@ sudo apt install kafkacat
 brew install kcat
 
 # Sending an empty message for the topic mysql-01-events.
-echo "agent:dummydata" | kafkacat -b localhost -t mysql-01-events  -Z -K:
+echo "agent:" | kafkacat -b localhost -t mysql-01-events  -Z -K:
 
 # You can monitor your broker in the meanwhile and see how a new segment is created. 
 watch ls -lisah /var/lib/kafka/data/mysql-01-events-0
