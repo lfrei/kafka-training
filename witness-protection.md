@@ -130,12 +130,10 @@ Exercise:
 * Use the template [Exercise4Stream.java](uc-witness-protection/kafka-stream/src/main/java/com/zuehlke/training/kafka/witnessprotection/stream/Exercise4Stream.java) to implement a stream.
 * Run the application and check the log output
 * Generate events which fulfill the criteria to be in the topics **"tax-department"** and some who doesn't.
-* **Note:** The data that Kafka Connects sends to Kafka is a representation in Avro. For the exercise it has to be changed to a String.
 
 Hints:
 
 * Check the course material of the iot use case if you need to refresh your knowledge about streams.
-* Have a look at the `value.converter` config for the jdbc connector.
 * To have another **ech20** the event, you can use the template from [Exercise4demo-event.xml](/uc-witness-protection/connectors/Exercise4demo-event.xml) or create your own.
 
 Links:
@@ -161,10 +159,14 @@ Exercise:
   * segment.bytes
 * Config the topic for compacting using the above-mentioned configuration. The attributes can be changed via akHQ UI.
 * Make sure that there are multiple messages with the same key and execute compaction.
+* Send a tombstone event to clean up all traces of the agent.
 
 Hints:
 
 * After a new segment is created, we need to send a new message to the same partition to kick-off compaction.
+* You can use AKHQ to send a tombstone: http://localhost:8080/ui/docker-kafka-server/topic/mysql-01-events/produce
+  * Select **Tombstone** checkbox
+  * Select the correct partition with the events of the agent
 
 Links:
 
