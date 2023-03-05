@@ -34,7 +34,7 @@ Exercise:
 * Open http://localhost:8085/ to explore the data in the database. To Login please leave the field for the server blank and type for the **username** and **password** "**kafka-training**".
 * Examine the template [Exercise0jdbc-connector.json](/uc-witness-protection/connectors/Exercise0jdbc-connector.json) and create a Kafka connector sending a post request with the tool of your choice (curl, Postman,etc.).
 * Discover the created events in Kafka via your preferred way.
-* Create new test events with pypMyAdmin. It is enough to type random information for the filed "XML_EVENT".
+* Create new test events with pypMyAdmin. It is enough to type random information for the field "XML_EVENT".
 * Why is this configuration not the most suitable for our scenario?
 * Bonus: The utilised JDBC connector "JdbcSourceConnector" is not a standard within the container **kafka-connect-01** . Can you figure out from where it is and how we added it?
 
