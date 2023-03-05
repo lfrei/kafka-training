@@ -6,6 +6,8 @@
     "connection.user": "kafka-training",
     "connection.password": "kafka-training",
     "topic.prefix": "mysql-01-",
+    "value.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
     "incrementing.column.name": "ID",
     "mode":"incrementing"
   }
