@@ -25,8 +25,7 @@ You get from your instructor access to a ubuntu-vm in the cloud where all traini
 
 After login, you find your VM [here](https://lightsail.aws.amazon.com/ls/webapp/home/instances)
 
-There are different VM's running, use the one with your name. You need to install a ssh client on your computer to condunc
-
+There are different VM's running, use the one with your name.
 
 
 ## Configure your environemnt
