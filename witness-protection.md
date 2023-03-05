@@ -41,18 +41,13 @@ Exercise:
 Hints:
 
 * If you get stuck, check the status of your connector. 
-* It might be necessary to restart the Kafka Connect. This can be done by the following command: **docker restart kafka-connect-01**
+* If you prefer the console to access the databases use the following command: `mysql --protocol=TCP -u kafka-training -pkafka-training events`
+* It might be necessary to restart the Kafka Connect. This can be done by the following command: `docker restart kafka-connect-01`
 * How to add content in a table with phpmyadmin can be found here https://www.siteground.com/tutorials/phpmyadmin/create-populate-tables/
 
 Links:
 
 * https://www.confluent.io/blog/kafka-connect-deep-dive-jdbc-source-connector
-
-💡 If you prefer the console to access the databases use the following command
-
-```
-mysql --protocol=TCP -u kafka-training -pkafka-training events
-```
 
 ### Exercise 1: Alter the connector configuration so that it works appropriate
 
