@@ -129,7 +129,7 @@ Exercise:
 Hints:
 
 * Check the course material of the iot use case if you need to refresh your knowledge about streams.
-* To have another **ech20** the event, you can use the template from [Exercise4demo-event.xml](/uc-witness-protection/connectors/Exercise4demo-event.xml) or create your own.
+* To have another **ech20** event, you can use the template from [Exercise4demo-event.xml](/uc-witness-protection/connectors/Exercise4demo-event.xml) or create your own.
 
 Links:
 * https://developer.confluent.io/tutorials/filter-a-stream-of-events/confluent.html
