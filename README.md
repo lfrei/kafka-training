@@ -1,6 +1,7 @@
 # Kafka Training
 
-* [Kafka Training Environment](training-environment.md)
+* [Kafka Training Environment Cloud](training-env-cloud.md)
+* [Kafka Training Environment Local](training-environment.md)
 
 ## Day 1
 * [Cluster](cluster.md)
