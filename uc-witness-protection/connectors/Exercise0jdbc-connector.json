@@ -6,6 +6,8 @@
     "connection.user": "kafka-training",
     "connection.password": "kafka-training",
     "topic.prefix": "mysql-01-",
+    "value.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
     "mode":"bulk",
     "poll.interval.ms" : 3600
   }
