@@ -109,7 +109,7 @@ Goals:
 
 Preparation:
 
-* Navigate to [AKHQ](http://localhost:8080/ui/docker-kafka-server/topic) to create the `metadata` topic
+* Navigate to [Cloud AKHQ](http://myVMsIP:8080/ui/docker-kafka-server/topic) or [Local AKHQ](http://localhost:8080/ui/docker-kafka-server/topic) to create the `metadata` topic
   * Create a new topic
     * Select Button 'Create a topic'
     * Enter Name `metadata`
