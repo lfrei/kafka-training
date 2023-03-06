@@ -74,6 +74,9 @@ You should see the AKHQ Topics screen
 modify:
 
 C:\Windows\System32\drivers\etc\hosts
+mac: /private/etc/hosts
+
+
 
 
 kafka-training\uc-iot\kafka-stream\src\main\resources\application.yaml
