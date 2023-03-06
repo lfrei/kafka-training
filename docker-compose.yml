@@ -26,6 +26,7 @@ services:
     ports:
       - "9092:9092"
       - "9093:9093"
+      - "9094:9094"
       - "9101:9101"
     environment:
       KAFKA_BROKER_ID: 1
