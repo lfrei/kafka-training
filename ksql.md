@@ -96,7 +96,7 @@ SELECT * FROM myplant_sensors_stream emit changes limit 5;
 SELECT * FROM myplant_motors_stream emit changes limit 5;
 ```
 
-💡 Have a look at the topics that have been created in [AKHQ](http://localhost:8080/ui/docker-kafka-server/topic)
+💡 Have a look at the topics that have been created in [Cloud AKHQ](http://myVMsIP:8080/ui/docker-kafka-server/topic) or [Local AKHQ](http://localhost:8080/ui/docker-kafka-server/topic)
 
 ### Exercise 1: Write alerts for high measurement values to a new stream
 
@@ -117,7 +117,7 @@ Strech Goal:
 
 Preparation:
 
-* Navigate to [AKHQ](http://localhost:8080/ui/docker-kafka-server/topic) to create the `metadataJson` topic
+* Navigate to [Cloud AKHQ](http://myVMsIP:8080/ui/docker-kafka-server/topic) or [Local AKHQ](http://localhost:8080/ui/docker-kafka-server/topic) to create the `metadataJson` topic
   * Create a new topic
     * Select Button 'Create a topic'
     * Enter Name `metadataJson`

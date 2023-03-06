@@ -10,7 +10,8 @@ docker-compose up -d
 
 To be able to solve this exercises, the exercises from [KSQL](ksql.md) should be completed. You check that by looking at the `SENSOR_TOP_20` Topic:
 
-http://localhost:8082/topics/SENSOR_TOP_20
+* http://myVMsIP:8082/topics/SENSOR_TOP_20
+* http://localhost:8082/topics/SENSOR_TOP_20
 
 If you need help, have a look at the API documentation:
 
@@ -20,7 +21,8 @@ https://docs.confluent.io/platform/current/kafka-rest/api.html
 
 To create a new Topic, you first have to find out your cluster id. Navigate to:
 
-http://localhost:8082/v3/clusters
+* http://myVMsIP:8082/v3/clusters
+* http://localhost:8082/v3/clusters
 
 Get the value from `cluster_id` and replace it in the following command to create a new Topic called `REST_PROXY_TEST`:
 
@@ -32,7 +34,8 @@ curl -X POST -H "Content-Type: application/json" \
 
 Check if the Topic as been created:
 
-http://localhost:8082/topics/REST_PROXY_TEST
+* http://myVMsIP:8082/topics/REST_PROXY_TEST
+* http://localhost:8082/topics/REST_PROXY_TEST
 
 💡 If you want to produce messages you can follow the [tutorial](https://docs.confluent.io/platform/current/tutorials/examples/clients/docs/rest-proxy.html#produce-records) here.
 
@@ -66,7 +69,7 @@ http://localhost:8082/consumers/top_20_consumer/instances/top_20_consumer/record
 
 💡 If you want to have a formatted output, install [jq JSON processor](https://stedolan.github.io/jq/) and append `... | jq` to the command.
 
-📝 Can you find your consumer using the Rest Proxy? Hint: Use this Url as entry point: http://localhost:8082/v3/clusters
+📝 Can you find your consumer using the Rest Proxy? Hint: Use this Url as entry point: http://myVMsIP:8082/v3/clusters or http://localhost:8082/v3/clusters
 
 After you are finished, remove the consumer again:
 
