@@ -31,7 +31,7 @@ Goals:
 
 Exercise:
 
-* Open http://localhost:8085/ to explore the data in the database. To Login please leave the field for the server blank and type for the **username** and **password** "**kafka-training**".
+* Open [Cloud PhpMyAdmin](http://myVMsIP:8085) or [Local PhpMyAdmin](http://localhost:8085/) to explore the data in the database. To Login please leave the field for the server blank and type for the **username** and **password** "**kafka-training**".
 * Examine the template [Exercise0jdbc-connector.json](/uc-witness-protection/connectors/Exercise0jdbc-connector.json) and create a Kafka connector sending a post request with the tool of your choice (curl, Postman,etc.).
 * Discover the created events in Kafka via your preferred way.
 * Create new test events with pypMyAdmin. It is enough to type random information for the field "XML_EVENT".
@@ -65,7 +65,9 @@ Exercise:
 Hints:
 
 * The ID column of the table plays an important part for this exercise.
-* For the put request you need another url: http://localhost:8083/connectors/jdbc_source_mysql_01/config
+* For the put request you need another url:
+  * Cloud: http://myVMsIP:8083/connectors/jdbc_source_mysql_01/config 
+  * Local: http://localhost:8083/connectors/jdbc_source_mysql_01/config
 
 Links:
 
@@ -159,7 +161,7 @@ Exercise:
 Hints:
 
 * After a new segment is created, we need to send a new message to the same partition to kick-off compaction.
-* You can use AKHQ to send a tombstone: http://localhost:8080/ui/docker-kafka-server/topic/mysql-01-events/produce
+* You can use AKHQ to send a tombstone: [Cloud AKHQ](http://myVMsIP:8080/ui/docker-kafka-server/topic/mysql-01-events/produce) or [Local AKHQ](http://localhost:8080/ui/docker-kafka-server/topic/mysql-01-events/produce)
   * Select **Tombstone** checkbox
   * Select the correct partition with the events of the agent
 
