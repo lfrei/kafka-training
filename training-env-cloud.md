@@ -42,16 +42,14 @@ For some exercises you need to login with ssh to your instance. You might use th
 ### Tool access
 
 To enable tool access for the exercises, whitelist [the IP of your workstation](https://whatismyipaddress.com/) with the following port `Networking -> IPv4 Firewall -> Add rule`:
-* Recommended: Custom TCP 3306 - 9094 [your IP]
-* Alternative - more restricted:
-  * AKHQ:            Custom TCP 8080 [your IP]
-  * Schema Registry: Custom TCP 8081 [your IP]
-  * Rest Proxy:      Custom TCP 8082 [your IP]
-  * Kafka Connect:   Custom TCP 8083 [your IP]
-  * KSQL:            Custom TCP 8088 [your IP]
-  * (Kafka Broker localhost: 9092 not needed) 
-  * Kafka Broker:    Custom TCP 9094 [your IP]
-  * phpMyadmin:      Custom TCP 3306 [your IP]
+* AKHQ:            Custom TCP 8080 [your IP]
+* Schema Registry: Custom TCP 8081 [your IP]
+* Rest Proxy:      Custom TCP 8082 [your IP]
+* Kafka Connect:   Custom TCP 8083 [your IP]
+* KSQL:            Custom TCP 8088 [your IP]
+* (Kafka Broker localhost: 9092 not needed) 
+* Kafka Broker:    Custom TCP 9094 [your IP]
+* phpMyadmin:      Custom TCP 3306 [your IP]
 
 If your IP changes, you have to redo this
 
@@ -63,22 +61,17 @@ If your IP changes, you have to redo this
 * `docker-compose up -d`
 
 
+### Modify your local hosts file (DNS entry)
+
+* Windows
+  * open C:\Windows\System32\drivers\etc\hosts
+  * add the following entry [ip of your VM] myVMsIP
+
+
+
 ### Test
- * in your browser: `myVmsIP:8080`
+ * in your [browser](http://myVMsIP:8080): `myVMsIP:8080`
 
 You should see the AKHQ Topics screen
 
 
-
-### TODO
-modify:
-
-C:\Windows\System32\drivers\etc\hosts
-mac: /private/etc/hosts
-
-
-
-
-kafka-training\uc-iot\kafka-stream\src\main\resources\application.yaml
-
-myVMsIP
