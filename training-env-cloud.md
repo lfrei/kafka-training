@@ -63,9 +63,9 @@ If your IP changes, you have to redo this
 
 ### Modify your local hosts file (DNS entry)
 
-* Windows
-  * open C:\Windows\System32\drivers\etc\hosts
-  * add the following entry [ip of your VM] myVMsIP
+Add the following entry in your hosts file:  `[ip of your VM] myVMsIP`
+* Windows in `C:\Windows\System32\drivers\etc\hosts`
+* MAC in `/private/etc/hosts`
 
 
 
