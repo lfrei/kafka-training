@@ -67,7 +67,7 @@ curl http://kafka-connect-01:8083/connectors/file_source_connector
 curl  'http://kafka-connect-01:8083/connectors/file_source_connector/status'
 ```
 
-💡 By replacing kafka-connect-01 with localhost you can use your browser to perform the get requests: http://localhost:8083/connectors
+💡 By replacing kafka-connect-01 with myVMsIP or localhost you can use your browser to perform the get requests: [Cloud Connect](http://myVMsIP:8083/connectors) or [Local Connect](http://localhost:8083/connectors)
 
 Now let's generate data that the connector should ingest into kafka:
 

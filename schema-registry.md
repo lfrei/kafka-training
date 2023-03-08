@@ -45,7 +45,7 @@ Send some messages:
 {"sensor_id":"myMotor","datetime":1235,"value":{"string": "starting"}}
 ```
 
-💡 Inspect the schema that has been registered to the topic `avro-sensor`: http://yourVMsIP:8080/ui/docker-kafka-server/schema
+💡 Inspect the schema that has been registered to the topic `avro-sensor`: [Cloud AKHQ](http://myVMsIP:8080/ui/docker-kafka-server/schema) or [Local AKHQ](http://localhost:8080/ui/docker-kafka-server/schema)
 
 💡 You can also use schemas for keys
 
@@ -104,7 +104,7 @@ Try to send some messages with the new field:
 {"sensor_id":"myMotor","datetime":1235,"value":{"string": "starting"},"type":"state"}
 ```
 
-💡 Inspect the schema that has been registered to the topic `avro-sensor`: http://yourVMsIP:8080/ui/docker-kafka-server/schema
+💡 Inspect the schema that has been registered to the topic `avro-sensor`: [Cloud AKHQ](http://myVMsIP:8080/ui/docker-kafka-server/schema) or [Local AKHQ](http://localhost:8080/ui/docker-kafka-server/schema)
 
 📝 What is the version number of the schema?
 

@@ -35,7 +35,7 @@ There are different VM's running, use the one with your name.
 
 For some exercises you need to login with ssh to your instance. You might use the web console, or login with your local shell (preferred):
 * download the ssh key `Connect ->  Download default key`
-* Login: `ssh -i LightsailDefaultKey-eu-central-1.pem -l ubuntu [ip of your instance]`
+* Login: `ssh -i LightsailDefaultKey-eu-central-1.pem -l ubuntu myVMsIP`
   * in the case password protection is enforced, create a password-protected file: `openssl rsa -aes256 -in LightsailDefaultKey-eu-central-1.pem -out myProtectedKey.pem`
 
 
@@ -47,7 +47,8 @@ To enable tool access for the exercises, whitelist [the IP of your workstation](
 * Rest Proxy:      Custom TCP 8082 [your IP]
 * Kafka Connect:   Custom TCP 8083 [your IP]
 * KSQL:            Custom TCP 8088 [your IP]
-* Kafka Broker:    Custom TCP 9092 [your IP]
+* (Kafka Broker localhost: 9092 not needed) 
+* Kafka Broker:    Custom TCP 9094 [your IP]
 * phpMyadmin:      Custom TCP 3306 [your IP]
 
 If your IP changes, you have to redo this
@@ -60,8 +61,16 @@ If your IP changes, you have to redo this
 * `docker-compose up -d`
 
 
+### Modify your local hosts file (DNS entry)
+
+Add the following entry in your hosts file:  `[ip of your VM] myVMsIP`
+* Windows in `C:\Windows\System32\drivers\etc\hosts`
+* MAC in `/private/etc/hosts`
+
+
+
 ### Test
- * in your browser: `[ip of your vm]:8080`
+ * in your [browser](http://myVMsIP:8080): `myVMsIP:8080`
 
 You should see the AKHQ Topics screen
 

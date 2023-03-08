@@ -13,7 +13,7 @@ Start the application and have a look at the StreamsConfig output:
 ```
 org.apache.kafka.streams.StreamsConfig   : StreamsConfig values: 
 ...
-bootstrap.servers = [localhost:9092]
+bootstrap.servers = [myVMsIP:9094, localhost:9092]
 processing.guarantee = ?
 ```
 

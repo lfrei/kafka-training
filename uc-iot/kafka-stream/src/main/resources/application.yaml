@@ -1,10 +1,10 @@
 spring:
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: myVMsIP:9094,localhost:9092
     streams:
       application-id: iot-kafka-stream
       properties:
-        schema.registry.url: http://localhost:8081
+        schema.registry.url: http://myVMsIP:8081,http://localhost:8081
         auto.offset.reset: earliest
         default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
         default.value.serde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde

@@ -1,6 +1,6 @@
 spring:
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: myVMsIP:9094,localhost:9092
     streams:
       application-id: witnessprotection-kafka-stream
       properties:
