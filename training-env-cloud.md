@@ -13,6 +13,7 @@ The following service components should be installed on your training device bef
   * Current Java JDK
   * Git
   * Maven (if not already included in IDE)
+* Clone `git clone https://github.com/lfrei/kafka-training.git` to your training device
 * Optional: HTTP client to send requests like Postman
 
 
