@@ -26,6 +26,9 @@ For this exercise, the schema registry is already bundled with some [schemas](uc
 
 ## Produce messages with a Avro Schema
 
+
+💡 Have a look  to the schema registry: [Cloud AKHQ](http://myVMsIP:8080/ui/docker-kafka-server/schema) or [Local AKHQ](http://localhost:8080/ui/docker-kafka-server/schema)
+
 Start a producer with the schema [sensor-1.avcs](uc-iot/schemas/avro/sensor-v1.avsc)
 
 ```
