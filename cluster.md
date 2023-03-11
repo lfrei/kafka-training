@@ -188,5 +188,5 @@ Lab:
 * Optional: You might also send manual data and check what happens on the topic
 
 ```
-./kafka-console-producer --broker-list localhost:19092 --topic sensor  --property parse.key=true --property key.separator=:
+./kafka-console-producer --broker-list localhost:19092 --topic sensor3  --property parse.key=true --property key.separator=:
 ```
