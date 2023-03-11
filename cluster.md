@@ -101,6 +101,8 @@ check if the topic is there. Run _./kafka-topics --help_ to check how.
 * shutdown the leader. Which broker is the leader now?
 * start the broker that was not running.
 
+💡 you can stop and start a broker by using `docker stop` as well as `docker start` and the container name for broker (e.g., kafka-1 for the first broker)
+
 Generate sensor data:
 ```
 seq 42 | ./kafka-console-producer --broker-list localhost:19092,localhost:29092,localhost:39092 --topic sensor && echo 'Produced 42 messages.'
@@ -116,8 +118,6 @@ shutdown broker
 * shutdown one broker: does the creation and the read still work?
 * shutdown two brokers: does it work with only one broker?
 * what happens to the replicas if you create data with only one broker alive? Is this behavior desired?
-
-💡 you can shutdown a broker by using `docker stop kafka-broker-number`
 
 play with failover
 * create a stream (seq 10901101042 |...)
