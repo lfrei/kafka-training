@@ -112,15 +112,16 @@ Check the sensor data:
 ./kafka-console-consumer --bootstrap-server localhost:19092,localhost:29092,localhost:39092 --from-beginning --topic sensor
 ```
 
-shutdown one broker
-* does the creation and the read still work?
-* does it work with only one broker?
+shutdown broker
+* shutdown one broker: does the creation and the read still work?
+* shutdown two brokers: does it work with only one broker?
 * what happens to the replicas if you create data with only one broker alive? Is this behavior desired?
+💡 you can shutdown a broker by using `docker stop kafka-number`
 
 play with failover
 * create a stream (seq 10901101042 |...)
 * connect a consumer
-* check the leader, and turn on and off brokers
+* check the leader, and start and stop brokers 
 * what did you observe?
 
 ## Exercise 2: Partitioning and Partitioning Keys, Consumer Groups 
