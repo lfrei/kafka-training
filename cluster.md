@@ -116,7 +116,8 @@ shutdown broker
 * shutdown one broker: does the creation and the read still work?
 * shutdown two brokers: does it work with only one broker?
 * what happens to the replicas if you create data with only one broker alive? Is this behavior desired?
-💡 you can shutdown a broker by using `docker stop kafka-number`
+
+💡 you can shutdown a broker by using `docker stop kafka-broker-number`
 
 play with failover
 * create a stream (seq 10901101042 |...)
