@@ -146,42 +146,44 @@ What happened?
 
 
 Consumer Groups
-* Read the data from topic sensor2 with a second consumer parallel
+* Read the data from topic sensor2 with a second consumer parallel by opening a second shell
 * Read the data from topic sensor2 with two consumers parallel, from the same consumer group (_--group myGroup_)
 * Observe in both cases what happens when you producen new data
 
 
 ## Exercise 3: Log Compaction
 
-In ths exercise, we configure the sensor topic for log compaction. For a production like setup you would most probably use the parameter _min.cleanable.dirty.ratio_. To check the log compaction feature in our lab, you should set the following paramters:
+In ths exercise, we configure the sensor topic for log compaction. For a production like setup you would most probably use the parameter _min.cleanable.dirty.ratio_. To check the log compaction feature in our lab, you should set the following paramters for the new topic sensor3:
 
 ```
- kafka-configs --alter --add-config cleanup.policy=compact --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
+ kafka-topics --bootstrap-server localhost:19092 --create --topic sensor3 --partitions 1 --replication-factor 3 --if-not-exists
 
- kafka-configs --alter --add-config max.compaction.lag.ms=1000 --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
+ kafka-configs --alter --add-config cleanup.policy=compact --entity-type topics --entity-name sensor3 --bootstrap-server localhost:19092
+
+ kafka-configs --alter --add-config max.compaction.lag.ms=1000 --entity-type topics --entity-name sensor3 --bootstrap-server localhost:19092
  
- kafka-configs --alter --add-config segment.bytes=256 --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
+ kafka-configs --alter --add-config segment.bytes=256 --entity-type topics --entity-name sensor3 --bootstrap-server localhost:19092
 ```
 
 ```
-  kafka-configs --describe --entity-type topics --entity-name sensor --bootstrap-server localhost:19092
+  kafka-configs --describe --entity-type topics --entity-name sensor3 --bootstrap-server localhost:19092
 ```
 
 
 Now, you start producing data. Note that we send data to the kafka console consumer in the form key:value with the same key as the value, for example: 1:1  2:2 etc.
 
 ```
-seq 5 | sed 's/\([0-9]\+\)/\1:\1/g' | ./kafka-console-producer --broker-list localhost:19092 --topic sensor  --property parse.key=true --property key.separator=: && echo 'Produced 5 messages.'
+seq 5 | sed 's/\([0-9]\+\)/\1:\1/g' | ./kafka-console-producer --broker-list localhost:19092 --topic sensor3  --property parse.key=true --property key.separator=: && echo 'Produced 5 messages.'
 ```
 
 ```
-./kafka-console-consumer --bootstrap-server localhost:19092,localhost:29092,localhost:39092 --from-beginning --topic sensor
+./kafka-console-consumer --bootstrap-server localhost:19092,localhost:29092,localhost:39092 --from-beginning --topic sensor3
 ```
 
 Lab:
 * Observe what happens if you send the same data several time
-* Observe what happens if you send now a sequence of 9 entries and read the data again
-* You might also send manual data and check what happens on the topic
+* Observe what happens if you send now a sequence of 9 entries, read the data and send then a sequence of 5 entries again
+* Optional: You might also send manual data and check what happens on the topic
 
 ```
 ./kafka-console-producer --broker-list localhost:19092 --topic sensor  --property parse.key=true --property key.separator=:
