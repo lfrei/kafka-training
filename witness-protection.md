@@ -17,7 +17,7 @@
 
 The folder **uc-witness-protection** contains the material to support the exercises.
 
-![img.png](img/uc-wp-1.JPG)
+![Setup](img/uc-wp.png)
 
 ## Exercises
 
