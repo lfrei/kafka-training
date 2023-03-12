@@ -11,13 +11,13 @@
 
 ## Initial Setup
 
+![Setup](img/uc-wp.png)
+
 * 1: **MariaDB** contains all events. It is already prepared with test data of simplified events. JDBC URL: jdbc:mysql://mariadb:3306/events
 * 2: **Kafka connect** runs in a Docker container with the name kafka-connect-01. It will be used to ingest the events via JDBC connector.
 * 3: Using **Kafka Streams** to write the data to other topics.
 
 The folder **uc-witness-protection** contains the material to support the exercises.
-
-![Setup](img/uc-wp.png)
 
 ## Exercises
 
