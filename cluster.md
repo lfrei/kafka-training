@@ -4,6 +4,8 @@
 
 ## Start the cluster
 
+If you are using the cloud environment, we suggest to stop docker compose by running `docker compose down`   in `~/kafka-training` folder.
+
 Start 3 Zookeeper hosts
 
 ![3 Zookeeper](/img/zookeepers.jpg)
