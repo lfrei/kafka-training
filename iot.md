@@ -43,6 +43,8 @@ A motor is changing its state at a random time. You can specify the states, as w
 | MOTOR_STATES_1        | State of the motor (default: off)                    |
 | MOTOR_STATES_2..n     | State of the motor                                   |
 
+![Setup](img/uc-iot.png)
+
 ## Exercises
 
 ### Exercise 0: Write your first stream
