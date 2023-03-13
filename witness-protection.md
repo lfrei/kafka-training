@@ -154,6 +154,7 @@ Exercise:
   * min.compaction.lag.ms
   * segment.ms
   * segment.bytes
+  * delete.retention.ms
 * Config the topic for compacting using the above-mentioned configuration. The attributes can be changed via akHQ UI.
 * Make sure that there are multiple messages with the same key and execute compaction.
 * Send a tombstone event to clean up all traces of the agent.
