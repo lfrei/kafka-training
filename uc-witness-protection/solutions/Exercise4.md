@@ -1,11 +1,20 @@
 ## Exercise 4
-We need to configure two attributes: **cleanup.policy** and **max.compaction.lag.ms**
+We need to configure four attributes: **cleanup.policy**, **max.compaction.lag.ms**, **segment.ms** and **delete.retention.ms**
 * Attribute: **cleanup.policy**
-* Definition: A string that is either "delete" or "compact" or both. This string designates the retention policy to use on old log segments. The default policy ("delete") will discard old segments when their retention time or size limit has been reached. The "compact" setting will enable log compaction on the topic.
-* Answer:  Log compaction is a mechanism to give finer-grained per-record retention, rather than the coarser-grained time-based retention.  That is why need to set the value to **compact**. .
+    * Definition: A string that is either "delete" or "compact" or both. This string designates the retention policy to use on old log segments. The default policy ("delete") will discard old segments when their retention time or size limit has been reached. The "compact" setting will enable log compaction on the topic.
+    * Answer:  Log compaction is a mechanism to give finer-grained per-record retention, rather than the coarser-grained time-based retention.  That is why need to set the value to **compact**.
 
-* **max.compaction.lag.ms:** The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
-* Answer: For this attribute we should define a reasonable value for the demo case like 3 minutes (180000 ms).
+* Attribute: **max.compaction.lag.ms**
+    * Defintion: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+    * Answer: For this attribute we should define a reasonable value for the demo case like 3 minutes (**180000 ms**).
+
+* Attribute: **segment.ms**
+    * Defintion: This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn’t full to ensure that retention can delete or compact old data.
+    * Answer: For this attribute we should define a reasonable value for the demo case like 3 minutes (**180000 ms**).
+
+* Attribute: **delete.retention.ms**
+    * Defintion: The amount of time to retain delete tombstone markers for log compacted topics.
+    * Answer: For this attribute we should define a reasonable value for the demo case like 3 minutes (**180000 ms**).
 
 Let us create some data for the message key "agent" with phpMyAdmin.
 ```
@@ -15,7 +24,7 @@ INSERT INTO `events` (`ID`, `XML_EVENT`, `CREATETIME`, `PERSON_IDENTIFIER`) VALU
 ```
 Now wait until the defined 3 minutes are over and crate a new message for the key **agent**.
 
-You can use AKHQ for that or use **Kafkacat**: 
+You can use AKHQ for that or use **Kafkacat**:
 
 ```
 # Install on Ubutntu 
@@ -31,4 +40,4 @@ echo "agent:" | kafkacat -b localhost -t mysql-01-events  -Z -K:
 watch ls -lisah /var/lib/kafka/data/mysql-01-events-0
 ```
 
-All messages should now be compacted. 
+All messages should now be compacted.
