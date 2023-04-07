@@ -1,0 +1,16 @@
+{
+  "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+  "connection.url": "jdbc:mysql://mariadb:3306/events",
+  "connection.user": "kafka-training",
+  "connection.password": "kafka-training",
+  "topic.prefix": "mysql-01-",
+  "value.converter": "org.apache.kafka.connect.storage.StringConverter",
+  "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+  "incrementing.column.name": "ID",
+  "mode":"incrementing",
+  "transforms":"createKey,extractString",
+  "transforms.createKey.type": "org.apache.kafka.connect.transforms.ValueToKey",
+  "transforms.createKey.fields": "PERSON_IDENTIFIER",
+  "transforms.extractString.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
+  "transforms.extractString.field": "PERSON_IDENTIFIER"
+}
