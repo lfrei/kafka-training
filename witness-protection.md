@@ -74,28 +74,7 @@ Links:
 * https://www.confluent.io/blog/kafka-connect-deep-dive-jdbc-source-connector/#incremental-ingest
 * https://docs.confluent.io/platform/current/connect/references/restapi.html#connectors
 
-### Exercise 2: Consume the events with consumer groups
-
-Goals:
-
-* Share the data of one topic between two consumer.
-* Learn how to utilise Kafka mechanism for horizontal scaling with consumer groups.
-
-Exercise:
-
-* Use the topic **mysql-01-events** and make sure the partitions fulfill the requirement of two consumer.
-* Distribute the events for two consumer so that one consumer does not see event of the other consumer.
-* Generate test events to simulate the distribution of events.
-
-Hints:
-
-* You can re-create or alter the existing topic.
-
-Links:
-
-* https://docs.confluent.io/platform/current/clients/consumer.html
-
-### Exercise 3: Using a kafka message key
+### Exercise 2: Using a kafka message key
 
 Goals:
 
@@ -114,7 +93,7 @@ Links:
 * https://docs.confluent.io/platform/current/connect/transforms/valuetokey.html#chained-transformation
 * https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html
 
-### Exercise 4: Use Kafka streams to forward the events to tax department
+### Exercise 3: Use Kafka streams to forward the events to tax department
 
 Goals:
 
@@ -124,20 +103,20 @@ Goals:
 Exercise:
 
 * Create a new topic for the tax department with the name **"tax-department"** or use auto creation.
-* Use the template [Exercise4Stream.java](uc-witness-protection/kafka-stream/src/main/java/com/zuehlke/training/kafka/witnessprotection/stream/Exercise4Stream.java) to implement a stream.
+* Use the template [Exercise3Stream.java](uc-witness-protection/kafka-stream/src/main/java/com/zuehlke/training/kafka/witnessprotection/stream/Exercise3Stream.java) to implement a stream.
 * Run the application and check the log output
 * Generate events which fulfill the criteria to be in the topics **"tax-department"** and some who doesn't.
 
 Hints:
 
 * Check the course material of the iot use case if you need to refresh your knowledge about streams.
-* To have another **ech20** event, you can use the template from [Exercise4demo-event.xml](/uc-witness-protection/connectors/Exercise4demo-event.xml) or create your own.
+* To have another **ech20** event, you can use the template from [Exercise3demo-event.xml](/uc-witness-protection/connectors/Exercise3demo-event.xml) or create your own.
 
 Links:
 * https://developer.confluent.io/tutorials/filter-a-stream-of-events/confluent.html
 * https://www.confluent.io/blog/kafka-connect-deep-dive-converters-serialization-explained/
 
-### Exercise 5: Compacting
+### Exercise 4: Compacting
 
 The double agent is done with his job. We need to compact all events.
 
