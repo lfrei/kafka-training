@@ -66,6 +66,7 @@ If your IP changes, you have to redo this
 * `git pull --rebase`
 * `docker-compose up -d`
 
+💡 **Important note:** If you update your environment by the above-mentioned steps, it can take up to 20 minutes until the whole environment in running. This includes AKHQ.
 
 ### Modify your local hosts file (DNS entry)
 
