@@ -182,7 +182,7 @@ services:
    
   akhq:
     restart: always
-    image: tchiotludo/akhq
+    image: tchiotludo/akhq:0.24.0
     depends_on:
       - broker
       - schema-registry
