@@ -14,6 +14,20 @@ import org.springframework.context.annotation.Configuration;
 public class Exercise1Stream {
 
     @Bean
+    public KStream<String, SensorMeasurement> exercise1(StreamsBuilder builder) {
+
+        KStream<String, SensorMeasurement> stream = builder.stream("myPlant");
+
+        stream
+                .filter(((key, value) -> key.equals("mySensor")))
+                .filter(new HighMeasurement())
+                .to("myPlant-alert");
+
+        return stream;
+    }
+
+    // Solution including the 'stretch goal' of the exercise:
+    @Bean
     public KStream<String, SensorMeasurement> exercise1_extended(StreamsBuilder builder) {
 
         KStream<String, SensorMeasurement> stream = builder.stream("myPlant");
@@ -32,19 +46,6 @@ public class Exercise1Stream {
                         Branched.withConsumer(s -> s
                                 .filter(new ErrorMeasurement())
                                 .to("myPlant-alert-extended")));
-
-        return stream;
-    }
-
-    @Bean
-    public KStream<String, SensorMeasurement> exercise1(StreamsBuilder builder) {
-
-        KStream<String, SensorMeasurement> stream = builder.stream("myPlant");
-
-        stream
-                .filter(((key, value) -> key.equals("mySensor")))
-                .filter(new HighMeasurement())
-                .to("myPlant-alert");
 
         return stream;
     }
