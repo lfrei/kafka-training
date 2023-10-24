@@ -1,25 +1,11 @@
 ---
 version: '2'
 services:
-  zookeeper:
-    restart: always
-    image: confluentinc/cp-zookeeper:7.3.2
-    hostname: zookeeper
-    container_name: zookeeper
-    ports:
-      - "2181:2181"
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-      ZOOKEEPER_ADMIN_ENABLE_SERVER: 'false'
-
   broker:
     restart: always
-    image: confluentinc/cp-server:7.3.2
+    image: confluentinc/cp-server:7.5.1
     hostname: broker
     container_name: broker
-    depends_on:
-      - zookeeper
     volumes:
      - ./security/certs/:/etc/kafka/secrets 
      - ./security/scripts:/scripts
@@ -30,7 +16,13 @@ services:
       - "9101:9101"
     environment:
       KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      #KRAFT
+      KAFKA_ENABLE_KRAFT: yes
+      KAFKA_CFG_PROCESS_ROLES: broker,controller
+      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 1@127.0.0.1:2181
+      #- ALLOW_PLAINTEXT_LISTENER=yes
+      #END KRAFT, see also KAFKA_ADVERTISED_LISTENERS and KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
       #Activate TLS   
       #KAFKA_SSL_KEYSTORE_FILENAME: kafka.broker.keystore.jks 
       #KAFKA_SSL_KEYSTORE_CREDENTIALS: broker_keystore_creds
@@ -47,8 +39,8 @@ services:
       #KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
       #End ACL Part
       #Deactivate if TLS is enabled.
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092,PLAINTEXT_CLOUD://myVMsIP:9094
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP:  PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,PLAINTEXT_CLOUD:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092,PLAINTEXT_CLOUD://myVMsIP:9094,CONTROLLER://:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP:  PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,PLAINTEXT_CLOUD:PLAINTEXT,CONTROLLER:PLAINTEXT
       #End deactivate if TLS is enabled.
       #Activate for TLS
       #KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092,PLAINTEXT_CLOUD://myVMsIP:9094,SSL://broker:9093
