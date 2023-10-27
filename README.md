@@ -1,9 +1,9 @@
+> [!WARNING]  
+> This repository is deprecated. Please use https://github.com/Zuehlke/kafka-streaming-technology instead. 
+
 # Kafka Training
 
-* [Kafka Training Environment Cloud](training-env-cloud.md) (preferred)
-
-or
-
+* [Kafka Training Environment Cloud](training-env-cloud.md) (preferred) or
 * [Kafka Training Environment Local](training-environment.md)
 
 ## Day 1
