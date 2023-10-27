@@ -24,12 +24,13 @@ public class Exercise2Stream {
 
         KStream<String, SensorMeasurement> stream = builder.stream("myPlant");
 
-        // TODO: join the myPlant stream with the metadata table using the keys
-
-        // TODO: expand SensorMeasurement value with type from metadata
-
-        // TODO: write the result to a new Kafka Topic
+        stream
+                .join(metadata,
+                        (key, value) -> key,
+                        (sensorMeasurement, type) -> SensorMeasurement.newBuilder(sensorMeasurement).setType(type).build())
+                .to("myPlant-metadata");
 
         return stream;
     }
+
 }
