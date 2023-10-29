@@ -11,17 +11,21 @@ services:
      - ./security/scripts:/scripts
     ports:
       - "9092:9092"
+      - "2181:2181"
       - "9093:9093"
       - "9094:9094"
       - "9101:9101"
     environment:
       KAFKA_BROKER_ID: 1
+      KAFKA_NODE_ID: 1
       #KRAFT
-      KAFKA_ENABLE_KRAFT: yes
-      KAFKA_CFG_PROCESS_ROLES: broker,controller
-      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
-      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 1@127.0.0.1:2181
-      #- ALLOW_PLAINTEXT_LISTENER=yes
+      CLUSTER_ID: MkU3OEVBNTcwNTJENDM2Qk
+      #TODO: create above id individually
+      #TODO: Fix Cluster link metadata topic creation failed: org.apache.kafka.common.errors.InvalidReplicationFactorException: Unable to replicate the partition 3 time(s): The target replication factor of 3
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@broker:2181
       #END KRAFT, see also KAFKA_ADVERTISED_LISTENERS and KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
       #Activate TLS   
       #KAFKA_SSL_KEYSTORE_FILENAME: kafka.broker.keystore.jks 
@@ -39,7 +43,8 @@ services:
       #KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
       #End ACL Part
       #Deactivate if TLS is enabled.
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092,PLAINTEXT_CLOUD://myVMsIP:9094,CONTROLLER://:2181
+      KAFKA_LISTENERS: PLAINTEXT://broker:29092,CONTROLLER://broker:2181,PLAINTEXT_HOST://localhost:9092,PLAINTEXT_CLOUD://0.0.0.0:9094
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092,PLAINTEXT_CLOUD://myVMsIP:9094
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP:  PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,PLAINTEXT_CLOUD:PLAINTEXT,CONTROLLER:PLAINTEXT
       #End deactivate if TLS is enabled.
       #Activate for TLS
